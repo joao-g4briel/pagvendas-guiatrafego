@@ -36,6 +36,11 @@ export default function PrivacidadePage() {
           usados para segurança e funcionamento do site.
         </li>
         <li>
+          <strong>Estatísticas de visitas agregadas</strong> (Vercel Web Analytics), sem cookies: páginas vistas,
+          origem do acesso, país, navegador e tipo de dispositivo, contados de forma agregada, sem identificar quem
+          visita.
+        </li>
+        <li>
           <strong>Sua escolha sobre cookies</strong>, guardada no armazenamento local do navegador.
         </li>
         <li>
@@ -65,7 +70,8 @@ export default function PrivacidadePage() {
 
       <h2>5. Com quem os dados são compartilhados</h2>
       <p>
-        Com a empresa de hospedagem do site, com a {checkout.provider} na compra e, apenas com o seu
+        Com a Vercel, que hospeda o site e gera as estatísticas agregadas de visitas, com a {checkout.provider} na
+        compra e, apenas com o seu
         consentimento, com Google e Meta para medição. Esses fornecedores podem tratar dados fora do Brasil, com as
         salvaguardas previstas na LGPD.
       </p>

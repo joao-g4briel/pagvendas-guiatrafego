@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Space_Grotesk } from "next/font/google";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { Analytics } from "@/components/analytics/analytics";
 import { DevPendingNotice } from "@/components/dev-pending-notice";
 import { RevealObserver } from "@/components/reveal-observer";
@@ -61,6 +62,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <RevealObserver />
         <SalesClosedNotice />
         {hasTracking ? <Analytics /> : null}
+        <VercelAnalytics />
+
       </body>
     </html>
   );
