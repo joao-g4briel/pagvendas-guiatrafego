@@ -1,0 +1,28 @@
+# dependências
+/node_modules
+
+# build
+/.next/
+/out/
+/build
+*.tsbuildinfo
+next-env.d.ts
+
+# ambiente (nunca versione credenciais)
+.env
+.env*.local
+
+# ferramentas
+.vercel
+.DS_Store
+npm-debug.log*
+/tests/__pycache__/
+/tests/artifacts/
+.impeccable/config.local.json
+.impeccable/review/
+
+# o PDF completo do guia NUNCA entra no repositório
+*.pdf
+
+# ferramentas locais do Claude Code (skills reinstaláveis via skills-lock.json)
+/.claude/

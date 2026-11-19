@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-19T15:30:00-03:00",
+  "title": "Design System: Guia de Tráfego Pago — Metodaria",
+  "extensions": {
+    "colorMeta": {
+      "ink": { "role": "neutral", "displayName": "Preto de capa", "tonalRamp": ["#000000", "#080808", "#141414", "#262626", "#3a3a3a", "#5c5c5c", "#8c8c8c", "#c4c4c4"] },
+      "surface": { "role": "neutral", "displayName": "Superfície", "tonalRamp": ["#080808", "#0f0f0f", "#141414", "#1b1b1b", "#262626", "#3a3a3a", "#5c5c5c", "#8c8c8c"] },
+      "surface-2": { "role": "neutral", "displayName": "Superfície 2", "tonalRamp": ["#0f0f0f", "#141414", "#1b1b1b", "#222222", "#2c2c2c", "#3a3a3a", "#5c5c5c", "#8c8c8c"] },
+      "line": { "role": "neutral", "displayName": "Linha", "tonalRamp": ["#141414", "#1b1b1b", "#262626", "#303030", "#3a3a3a", "#4a4a4a", "#5c5c5c", "#737373"] },
+      "line-strong": { "role": "neutral", "displayName": "Linha forte", "tonalRamp": ["#1b1b1b", "#262626", "#303030", "#3a3a3a", "#4a4a4a", "#5c5c5c", "#737373", "#8c8c8c"] },
+      "arc": { "role": "neutral", "displayName": "Arco da capa", "tonalRamp": ["#0c0c0d", "#141516", "#1a1b1d", "#1f2022", "#262628", "#2e2f31", "#3a3b3e", "#4a4b4e"] },
+      "fg": { "role": "primary", "displayName": "Branco de capa", "tonalRamp": ["#5c5c5c", "#737373", "#8c8c8c", "#a6a6a6", "#c4c4c4", "#dedede", "#f5f5f5", "#ffffff"] },
+      "fg-2": { "role": "neutral", "displayName": "Cinza de apoio", "tonalRamp": ["#3a3a3a", "#5c5c5c", "#737373", "#8c8c8c", "#a6a6a6", "#c4c4c4", "#dedede", "#f5f5f5"] },
+      "fg-3": { "role": "neutral", "displayName": "Cinza de fólio", "tonalRamp": ["#262626", "#3a3a3a", "#5c5c5c", "#737373", "#8c8c8c", "#a6a6a6", "#c4c4c4", "#dedede"] },
+      "paper": { "role": "neutral", "displayName": "Papel", "tonalRamp": ["#8f8f8b", "#b0b0ab", "#c9c9c4", "#d4d4cf", "#e0e0dc", "#e9e9e6", "#f4f4f2", "#ffffff"] },
+      "paper-line": { "role": "neutral", "displayName": "Linha de papel", "tonalRamp": ["#7a7a76", "#999995", "#b5b5b0", "#c4c4bf", "#d4d4cf", "#e0e0dc", "#e9e9e6", "#f4f4f2"] },
+      "paper-ink": { "role": "neutral", "displayName": "Tinta", "tonalRamp": ["#000000", "#111111", "#222222", "#333333", "#444444", "#555555", "#777777", "#999999"] },
+      "paper-fg-2": { "role": "neutral", "displayName": "Cinza de papel", "tonalRamp": ["#222222", "#333333", "#444444", "#555555", "#666666", "#777777", "#999999", "#bbbbbb"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "H1 do hero e título do CTA final, em caixa alta." },
+      "section": { "displayName": "Seção", "purpose": "Títulos de seção, em caixa de frase." },
+      "title": { "displayName": "Título de bloco", "purpose": "Blocos de conteúdo, grupos e painéis." },
+      "body": { "displayName": "Texto", "purpose": "Texto corrido, até 65 caracteres por linha." },
+      "running-head": { "displayName": "Cabeçalho corrido", "purpose": "Topo do hero e da amostra; rótulos de coluna de tabela." },
+      "folio": { "displayName": "Fólio", "purpose": "Referências de página e de módulo, tabulares, ao lado ou abaixo do título." }
+    },
+    "shadows": [
+      { "name": "cover", "value": "0 2px 0 0 rgb(255 255 255 / 0.06), 0 40px 70px -24px rgb(0 0 0 / 0.95), 0 18px 30px -18px rgb(0 0 0 / 0.8)", "purpose": "Capa real em perspectiva sobre o fundo preto." },
+      { "name": "page", "value": "0 1px 2px rgb(0 0 0 / 0.08), 0 14px 30px -14px rgb(0 0 0 / 0.35)", "purpose": "Miniaturas das páginas na seção de papel." },
+      { "name": "button-glow", "value": "0 10px 24px -12px rgb(255 255 255 / 0.45)", "purpose": "Hover do botão primário." }
+    ],
+    "motion": [
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Entradas, revelações, accordion e barra móvel." },
+      { "name": "ease-out-quart", "value": "cubic-bezier(0.25, 1, 0.5, 1)", "purpose": "Mudanças de cor e borda dos botões." },
+      { "name": "hero-in", "value": "620ms ease-out-expo, translateY 18px → 0", "purpose": "Entrada do hero, escalonada por --d." },
+      { "name": "line-up", "value": "760ms ease-out-expo, máscara por linha", "purpose": "Revelação do H1, uma vez." },
+      { "name": "cover-in", "value": "900ms ease-out-expo, rotateY -26° → base", "purpose": "A capa pousa na perspectiva." },
+      { "name": "reveal", "value": "560–640ms ease-out-expo, translateY 16px", "purpose": "Revelação única de seções via IntersectionObserver." },
+      { "name": "rule-draw", "value": "900ms ease-out-expo, scaleX 0 → 1", "purpose": "Divisórias de tabela se desenham ao revelar." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botão primário",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ação de compra; todos levam ao checkout configurado.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Quero acessar o guia <svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 9h11M10 4.5 14.5 9 10 13.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/></svg></a>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:12px 22px;background:#f5f5f5;color:#080808;border:1px solid #f5f5f5;border-radius:4px;font:600 16px/1.2 'Space Grotesk',system-ui,sans-serif;text-decoration:none;transition:background-color 180ms cubic-bezier(.25,1,.5,1),transform 220ms cubic-bezier(.16,1,.3,1),box-shadow 220ms cubic-bezier(.16,1,.3,1)}.ds-btn-primary:hover{background:#fff;transform:translateY(-2px);box-shadow:0 10px 24px -12px rgb(255 255 255/.45)}.ds-btn-primary:focus-visible{outline:2px solid #f5f5f5;outline-offset:3px}.ds-btn-primary:active{transform:none;box-shadow:none}"
+    },
+    {
+      "name": "Botão fantasma",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Ação secundária, como ver a prévia.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Ver uma prévia</a>",
+      "css": ".ds-btn-ghost{display:inline-flex;align-items:center;min-height:48px;padding:12px 22px;background:transparent;color:#f5f5f5;border:1px solid #3a3a3a;border-radius:4px;font:600 16px/1.2 'Space Grotesk',system-ui,sans-serif;text-decoration:none;transition:border-color 180ms,background-color 180ms,transform 220ms cubic-bezier(.16,1,.3,1)}.ds-btn-ghost:hover{border-color:#f5f5f5;background:rgb(245 245 245/.06);transform:translateY(-2px)}.ds-btn-ghost:focus-visible{outline:2px solid #f5f5f5;outline-offset:3px}"
+    },
+    {
+      "name": "Campo monetário",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Campo da calculadora com prefixo R$.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Preço de venda</span><span class=\"ds-field-wrap\"><span class=\"ds-field-prefix\">R$</span><input class=\"ds-field-input\" inputmode=\"decimal\" value=\"120\"></span></label>",
+      "css": ".ds-field{display:grid;gap:10px;font-family:'Space Grotesk',system-ui,sans-serif;color:#f5f5f5}.ds-field-label{font-weight:500;font-size:15px}.ds-field-wrap{position:relative}.ds-field-prefix{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#8c8c8c}.ds-field-input{width:100%;min-height:48px;padding:10px 14px 10px 44px;background:#080808;border:1px solid #3a3a3a;border-radius:4px;color:#f5f5f5;font-size:18px;font-variant-numeric:tabular-nums}.ds-field-input:hover{border-color:#555}.ds-field-input:focus-visible{outline:2px solid #f5f5f5;outline-offset:2px;border-color:#f5f5f5}"
+    },
+    {
+      "name": "Navegação",
+      "kind": "nav",
+      "description": "Cabeçalho com marca, três links e compra.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-brand\">Metodaria</span><a href=\"#\">Conteúdo</a><a href=\"#\">Prévia</a><a href=\"#\">Dúvidas</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:36px;height:64px;padding:0 24px;background:#080808;border-bottom:1px solid #262626;font-family:'Space Grotesk',system-ui,sans-serif}.ds-nav-brand{font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#f5f5f5;margin-right:auto}.ds-nav a{color:#a6a6a6;text-decoration:none;font-size:15px;transition:color 150ms}.ds-nav a:hover{color:#f5f5f5}.ds-nav a:focus-visible{outline:2px solid #f5f5f5;outline-offset:3px}"
+    },
+    {
+      "name": "Linha de sumário",
+      "kind": "custom",
+      "description": "Módulo, título, pontilhado e página, como no índice do PDF.",
+      "html": "<div class=\"ds-toc\"><span class=\"ds-toc-label\">Módulo 06</span><span class=\"ds-toc-title\">Leilão, orçamento e posicionamentos</span><span class=\"ds-toc-leader\"></span><span class=\"ds-toc-page\">p. 15</span></div>",
+      "css": ".ds-toc{display:flex;align-items:baseline;gap:12px;padding:20px 0;border-bottom:1px solid #262626;font-family:'Space Grotesk',system-ui,sans-serif;color:#f5f5f5}.ds-toc-label,.ds-toc-page{font-size:14px;color:#8c8c8c;font-variant-numeric:tabular-nums}.ds-toc-label{width:96px;flex-shrink:0}.ds-toc-title{font-weight:500}.ds-toc-leader{flex:1;min-width:24px;border-bottom:1px dotted currentColor;opacity:.45;margin-bottom:.38em}"
+    },
+    {
+      "name": "Painel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Superfície da calculadora, da oferta e do checklist.",
+      "html": "<div class=\"ds-panel\"><h3>Quanto você pode pagar por uma venda?</h3><p>CPA desejado <strong>R$ 24,00</strong></p></div>",
+      "css": ".ds-panel{background:#141414;border:1px solid #262626;border-radius:4px;padding:48px;color:#f5f5f5;font-family:'Space Grotesk',system-ui,sans-serif}.ds-panel h3{margin:0 0 16px;font-size:30px;font-weight:700;letter-spacing:-.02em}.ds-panel p{color:#a6a6a6}.ds-panel strong{color:#f5f5f5;font-size:48px;font-variant-numeric:tabular-nums;display:block}"
+    }
+  ],
+  "narrative": {
+    "northStar": "O guia aberto",
+    "overview": "A página se comporta como o próprio PDF: capa preta por fora, miolo claro por dentro. A gramática vem do arquivo, com cabeçalho corrido em caixa alta sobre uma linha fina, referências de página, sumário com pontilhado até o número da página e tabelas separadas só por linhas horizontais. O arco cinza largo da capa reaparece cortado pela borda das seções escuras. O tom é editorial e contido: a energia vem da escala tipográfica e do contraste preto e branco, não de cor.",
+    "keyCharacteristics": [
+      "Monocromia estrita: preto, branco e cinzas neutros, com uma única seção clara (a amostra).",
+      "Space Grotesk em toda a interface; caixa alta só no display.",
+      "Linhas de 1 px como estrutura; superfícies elevadas só para a calculadora, a oferta e o checklist.",
+      "Números em algarismos tabulares sempre que comparam valores ou páginas."
+    ],
+    "rules": [
+      { "name": "The One Paper Rule", "body": "O fundo claro aparece só na seção que mostra o miolo do guia. Qualquer outra seção é preta.", "section": "colors" },
+      { "name": "The No Accent Rule", "body": "Não existe cor de destaque. Hierarquia e ação vêm de escala, peso e do botão branco.", "section": "colors" },
+      { "name": "The Folio Rule", "body": "Referências de módulo e página ficam ao lado ou abaixo do título, como fólio. Nunca como etiqueta acima de um título.", "section": "typography" },
+      { "name": "The Uppercase Budget Rule", "body": "Caixa alta é para o display e para os cabeçalhos corridos. Títulos de seção e de bloco ficam em caixa de frase.", "section": "typography" },
+      { "name": "The Object Shadow Rule", "body": "Só objetos do mundo (capa, páginas) projetam sombra. Painéis e botões ficam planos.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do usar linhas de 1 px para estruturar tabelas, índices e listas.",
+      "Do colocar referências de página como fólio, em algarismos tabulares.",
+      "Do usar a capa real em perspectiva com sombra CSS; nunca redesenhar o texto da capa.",
+      "Do reservar o fundo claro para mostrar páginas do guia.",
+      "Do fazer as divisórias se desenharem da esquerda para a direita quando a seção revela, e desligar tudo com redução de movimento."
+    ],
+    "donts": [
+      "Don't adicionar cor de destaque, gradiente colorido ou neon.",
+      "Don't colocar etiquetas em caixa alta acima de títulos de seção.",
+      "Don't usar fileiras de cartões iguais com ícone, título e texto.",
+      "Don't dar à capa espessura de livro impresso: o produto é um PDF.",
+      "Don't usar selos, logotipos ou cores de Meta e Google."
+    ]
+  }
+}
