@@ -55,6 +55,8 @@ Para mudar as páginas da amostra, edite `PAGINAS_AMOSTRA` no script e `previewP
 
 ## Medição (opcional)
 
+**Cliques em comprar, sem configurar nada:** cada clique num botão de compra aparece no Vercel Web Analytics como uma visualização de `/clique-comprar/<botão>` (`topo`, `menu`, `hero`, `previa`, `oferta`, `final`, `barra-celular`). Veja em *Analytics → Pages*. O plano gratuito não tem eventos personalizados, por isso a visualização virtual. Efeito no painel: cada clique soma uma visualização e tira o visitante da taxa de rejeição. O Web Analytics não usa cookies, então essa contagem não depende do aviso de consentimento.
+
 Sem IDs, nenhum rastreador é carregado e não aparece aviso de cookies. Com `NEXT_PUBLIC_GA4_ID` e/ou `NEXT_PUBLIC_META_PIXEL_ID`:
 
 - um aviso pede consentimento; GA4 e Meta Pixel só carregam depois de "Aceitar medição". A escolha pode ser revista no rodapé;
@@ -91,7 +93,8 @@ Os scripts usam o Edge instalado (`channel="msedge"`); troque para `chrome` se p
 
 ## Pendências antes de abrir as vendas
 
-- [ ] Conferir no checkout da Cakto: nome do produto, preço de R$ 29,90 e meios de pagamento. Depois, preencher `checkout.paymentMethods` (a página só cita Pix ou cartão quando esse campo estiver preenchido).
+- [x] Meios de pagamento conferidos no checkout em 20/11/2026 (cartão, Pix e cartão + Pix) e preenchidos em `checkout.paymentMethods`.
+- [ ] Alinhar o checkout da Cakto com a página. Em 20/11/2026 ele mostrava outro nome ("Anuncie com Método — Guia Prático de Tráfego Pago"), uma taxa de serviço de R$ 0,99 (total de R$ 30,89, contra R$ 29,90 na página) e um cronômetro de "oferta por tempo limitado".
 - [ ] Revisar o texto de entrega (`checkout.delivery`) conforme a configuração do produto na Cakto.
 - [ ] Preencher a identificação do vendedor: nome ou razão social, CPF/CNPJ e endereço (exigidos pelo Decreto 7.962/2013).
 - [ ] Definir o canal de suporte (e-mail e/ou WhatsApp).

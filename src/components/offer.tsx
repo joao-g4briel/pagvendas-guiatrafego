@@ -70,7 +70,7 @@ export function Offer() {
             <div className="mt-7 grid gap-2 border-t border-line pt-6 text-center text-sm leading-relaxed text-fg-2">
               <p>{paymentLine}</p>
               <p>
-                Você pode desistir em até {refund.legalDays} dias, com devolução do valor (CDC, art. 49).{" "}
+                Garantia de {refund.legalDays} dias: se não gostar, você desiste e recebe 100% do valor de volta.{" "}
                 <a href="#duvidas" className="text-fg underline hover:text-white">
                   Como pedir
                 </a>

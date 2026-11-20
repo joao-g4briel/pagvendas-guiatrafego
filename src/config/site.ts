@@ -67,8 +67,9 @@ export const siteConfig = {
     /**
      * Meios de pagamento conferidos manualmente no checkout. Enquanto estiver vazio,
      * a página não menciona Pix, cartão ou boleto.
+     * Conferido em 20/11/2026: o checkout oferece cartão de crédito, Pix e cartão + Pix.
      */
-    paymentMethods: [] as PaymentMethod[],
+    paymentMethods: ["pix", "cartao"] as PaymentMethod[],
     /** Texto de entrega exibido na oferta e no FAQ. Revise conforme a configuração do produto na Cakto. */
     delivery:
       "O pagamento e a entrega acontecem na Cakto. Depois da confirmação do pagamento, a plataforma libera o acesso ao PDF conforme a configuração do produto, normalmente pelo e-mail informado na compra.",
@@ -131,6 +132,13 @@ export function supportWhatsappUrl(): string | null {
 export const paymentMethodLabels: Record<PaymentMethod, string> = {
   pix: "Pix",
   cartao: "cartão de crédito",
+  boleto: "boleto",
+};
+
+/** Versão curta, para a linha logo abaixo do botão do hero. */
+export const paymentMethodShortLabels: Record<PaymentMethod, string> = {
+  pix: "Pix",
+  cartao: "cartão",
   boleto: "boleto",
 };
 

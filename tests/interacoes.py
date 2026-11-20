@@ -27,7 +27,13 @@ def check(ok: bool, nome: str) -> None:
 
 
 def coletar_erros(page: Page, erros: list[str]) -> None:
-    page.on("console", lambda m: erros.append(m.text) if m.type == "error" else None)
+    # O script do Vercel Web Analytics só existe na Vercel; fora dela, o 404 dele é esperado.
+    def no_console(m) -> None:
+        vercel = "/_vercel/insights/" in (m.location or {}).get("url", "") or "/_vercel/insights/" in m.text
+        if m.type == "error" and not vercel:
+            erros.append(m.text)
+
+    page.on("console", no_console)
     page.on("pageerror", lambda e: erros.append(str(e)))
 
 
@@ -111,6 +117,20 @@ def desktop(p, url: str) -> None:
     check(dialog.get_attribute("open") is None, "Escape fecha o lightbox")
     foco = page.evaluate("document.activeElement.getAttribute('aria-label')")
     check(bool(foco) and foco.startswith("Ampliar página 2:"), f"foco volta à miniatura que abriu o lightbox ({foco})")
+
+    # Contagem gratuita do clique no Vercel Web Analytics (visualização virtual), sem navegar
+    page.evaluate(
+        """() => {
+          window.__va = [];
+          window.va = (...args) => window.__va.push(args);
+          document.addEventListener('click', (e) => {
+            if (e.target.closest('a[data-checkout-cta=hero]')) e.preventDefault();
+          }, { capture: true, once: true });
+        }"""
+    )
+    page.locator("a[data-checkout-cta=hero]").click()
+    contados = page.evaluate("window.__va.filter((c) => c[0] === 'pageview').map((c) => c[1].path)")
+    check(contados == ["/clique-comprar/hero"], f"clique no hero conta /clique-comprar/hero no Vercel Analytics ({contados})")
 
     # Clique no CTA: mesma aba, URL exata, sem compra real (resposta local)
     page.route("https://pay.cakto.com.br/**", lambda route: route.fulfill(status=200, body="checkout interceptado"))

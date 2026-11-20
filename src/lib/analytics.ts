@@ -8,9 +8,21 @@
  * Nenhum evento leva dados pessoais.
  */
 
+import { pageview } from "@vercel/analytics";
 import { siteConfig } from "@/config/site";
 
 export type CtaLocation = "header" | "menu" | "hero" | "preview" | "offer" | "final" | "mobile_bar";
+
+/** Nome de cada botão no painel da Vercel: /clique-comprar/<nome>. */
+const CLICK_PATH: Record<CtaLocation, string> = {
+  header: "topo",
+  menu: "menu",
+  hero: "hero",
+  preview: "previa",
+  offer: "oferta",
+  final: "final",
+  mobile_bar: "barra-celular",
+};
 
 export type ConsentState = "granted" | "denied";
 
@@ -80,12 +92,29 @@ export function trackProductViewMeta(): void {
 }
 
 /**
+ * Conta o clique no Vercel Web Analytics como uma visualização virtual de
+ * /clique-comprar/<botão>. O Web Analytics não usa cookies nem guarda dados pessoais,
+ * por isso roda sem o consentimento; e o plano gratuito não tem eventos personalizados,
+ * daí a visualização virtual. O envio usa fetch com keepalive e sobrevive à saída para o checkout.
+ * Efeito no painel: cada clique soma uma visualização e tira o visitante da taxa de rejeição.
+ */
+function countClickOnVercel(location: CtaLocation): void {
+  try {
+    pageview({ route: "/clique-comprar/[botao]", path: `/clique-comprar/${CLICK_PATH[location]}` });
+  } catch {
+    // Script bloqueado: a compra segue normalmente.
+  }
+}
+
+/**
  * Clique em um botão de compra. É intenção, não conversão:
+ * - Vercel: visualização virtual em /clique-comprar/<botão>, sempre;
  * - GA4: evento próprio `checkout_click` (não marcar como evento principal para lances).
  * - Meta: evento personalizado `CheckoutClick`, para não duplicar o InitiateCheckout
  *   que a integração da Cakto pode disparar no próprio checkout.
  */
 export function trackCheckoutClick(location: CtaLocation): void {
+  countClickOnVercel(location);
   if (readConsent() !== "granted") return;
   const { currency, value } = productPayload();
   window.gtag?.("event", "checkout_click", {

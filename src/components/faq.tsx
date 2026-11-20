@@ -65,8 +65,8 @@ export function Faq() {
       question: "Como funciona o reembolso?",
       answer: (
         <>
-          Pelo art. 49 do Código de Defesa do Consumidor, você pode desistir em até {refund.legalDays} dias após a
-          compra, com devolução do valor pago.{" "}
+          São {refund.legalDays} dias de garantia: se não gostar, você pode desistir da compra e receber de volta 100%
+          do valor pago, como prevê o art. 49 do Código de Defesa do Consumidor.{" "}
           {refund.channel ? `Para pedir, ${refund.channel}.` : "O canal para o pedido será informado aqui em breve."}
           {refund.extraConditions ? ` ${refund.extraConditions}` : null}
         </>

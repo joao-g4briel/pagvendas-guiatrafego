@@ -1,12 +1,21 @@
 import type { CSSProperties } from "react";
 import { ArrowIcon, CheckoutCta } from "@/components/checkout-cta";
 import { TabletMockup } from "@/components/tablet-mockup";
-import { formattedPrice, siteConfig } from "@/config/site";
+import { formattedPrice, paymentMethodShortLabels, siteConfig } from "@/config/site";
 
 const delay = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 
 export function Hero() {
-  const { product, price } = siteConfig;
+  const { product, price, checkout, refund } = siteConfig;
+  const methods = new Intl.ListFormat("pt-BR", { style: "long", type: "disjunction" }).format(
+    checkout.paymentMethods.map((method) => paymentMethodShortLabels[method]),
+  );
+  const reassurance = [
+    checkout.paymentMethods.length > 0 ? methods.charAt(0).toUpperCase() + methods.slice(1) : null,
+    `${refund.legalDays} dias de garantia`,
+  ]
+    .filter(Boolean)
+    .join(" · ");
   const stats = [
     { value: product.pages, label: "páginas" },
     { value: product.modules, label: "módulos" },
@@ -51,6 +60,7 @@ export function Hero() {
                   Ver uma prévia
                 </a>
               </div>
+              <p className="mt-3 text-center text-sm text-fg-2 sm:text-left">{reassurance}</p>
             </div>
           </div>
 
