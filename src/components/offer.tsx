@@ -1,6 +1,6 @@
-import Image from "next/image";
-import { CoverArcs } from "@/components/arcs";
-import { ArrowIcon, CheckoutCta } from "@/components/checkout-cta";
+import { Check } from "lucide-react";
+import { CheckoutCta } from "@/components/checkout-cta";
+import { TabletMockup } from "@/components/tablet-mockup";
 import { formattedPrice, paymentMethodLabels, siteConfig } from "@/config/site";
 import { offerItems } from "@/content/guia";
 
@@ -11,74 +11,77 @@ function listFormat(items: string[]): string {
 export function Offer() {
   const { product, price, checkout, refund } = siteConfig;
   const methods = checkout.paymentMethods.map((method) => paymentMethodLabels[method]);
+  const paymentLine =
+    methods.length > 0
+      ? `Pagamento por ${listFormat(methods)} no checkout da ${checkout.provider}.`
+      : `Pagamento no checkout da ${checkout.provider}.`;
 
   return (
-    <section id="oferta" aria-labelledby="oferta-title" className="py-20 sm:py-28 lg:py-32">
-      <div className="shell">
-        <div className="relative overflow-hidden rounded border border-line bg-surface" data-reveal>
-          <CoverArcs className="pointer-events-none absolute -bottom-[40%] -left-[45%] w-[120%] max-w-none opacity-80 lg:-bottom-[70%] lg:-left-[18%] lg:w-[70%]" />
+    <section id="oferta" aria-labelledby="oferta-title" className="relative overflow-hidden border-t border-line py-20 sm:py-24 lg:py-28">
+      <div className="shell relative">
+        <h2 id="oferta-title" className="section-title mx-auto max-w-4xl text-center" data-reveal>
+          Seu próximo anúncio começa com um plano.
+        </h2>
 
-          <div className="relative grid gap-12 p-6 sm:p-10 lg:grid-cols-12 lg:gap-16 lg:p-16">
-            <div className="mx-auto w-[56%] max-w-[15rem] sm:max-w-[17rem] lg:col-span-4 lg:mx-0 lg:w-full lg:max-w-none">
-              <div className="overflow-hidden rounded-[3px] shadow-[0_36px_60px_-28px_rgb(0_0_0/0.95)] ring-1 ring-white/12">
-                <Image
-                  src={product.coverImage.src}
-                  width={product.coverImage.width}
-                  height={product.coverImage.height}
-                  alt={`Capa do guia ${product.coverTitle}`}
-                  sizes="(min-width: 64rem) 340px, (min-width: 40rem) 272px, 56vw"
-                  quality={85}
-                  className="block h-auto w-full"
-                />
-              </div>
+        <div className="mt-12 grid items-center gap-12 lg:mt-16 lg:grid-cols-12 lg:gap-16">
+          <div className="relative mx-auto w-[60%] max-w-[15rem] sm:max-w-[18rem] lg:col-span-5 lg:w-full lg:max-w-[22rem]" data-reveal>
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -left-[40%] top-[10%] aspect-square w-[160%] rounded-full bg-[radial-gradient(circle_at_60%_30%,#262628_0%,#141415_48%,transparent_72%)]"
+            />
+            <div className="relative">
+              <TabletMockup
+                src={product.coverImage.src}
+                width={product.coverImage.width}
+                height={product.coverImage.height}
+                alt={`Guia ${product.coverTitle} em um tablet`}
+                sizes="(min-width: 64rem) 352px, (min-width: 40rem) 288px, 60vw"
+                restTilt={0}
+              />
             </div>
+          </div>
 
-            <div className="lg:col-span-8">
-              <h2 id="oferta-title" className="section-title">
-                {product.name}
-              </h2>
-              <p className="mt-3 text-lg text-fg-2 sm:text-xl">{product.subtitle}</p>
+          <div
+            className="rounded-2xl border border-line-strong bg-surface p-6 shadow-[0_40px_80px_-40px_rgb(0_0_0/0.9)] sm:p-10 lg:col-span-7"
+            data-reveal
+          >
+            <h3 className="text-[1.75rem] font-extrabold leading-tight tracking-[-0.02em] sm:text-4xl">{product.name}</h3>
+            <p className="mt-4 flex flex-wrap items-baseline gap-x-3">
+              <span className="tabular text-[3.25rem] font-extrabold leading-none tracking-[-0.03em] sm:text-7xl">
+                {formattedPrice}
+              </span>
+              <span className="text-lg text-fg-2">{price.terms}</span>
+            </p>
 
-              <ul className="mt-9 grid gap-x-10 border-t border-line-strong sm:grid-cols-2">
-                {offerItems.map((item) => (
-                  <li key={item} className="flex gap-4 border-b border-line py-4 leading-snug">
-                    <svg className="mt-0.5 shrink-0" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                      <path d="m3 8.4 3 3 7-7" stroke="currentColor" strokeWidth="1.6" />
-                    </svg>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+            <ul className="mt-8 grid gap-3.5 sm:grid-cols-2 sm:gap-x-8">
+              {offerItems.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-[1.0625rem] leading-snug">
+                  <Check aria-hidden="true" className="mt-0.5 size-5 shrink-0" strokeWidth={2.5} />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
 
-              <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-                <p>
-                  <span className="tabular block text-[3.5rem] font-bold leading-none tracking-[-0.03em] sm:text-7xl">
-                    {formattedPrice}
-                  </span>
-                  <span className="mt-2 block text-fg-2">
-                    {price.terms}
-                    {methods.length > 0 ? ` · ${listFormat(methods)}` : ""}
-                  </span>
-                </p>
-                <CheckoutCta location="offer" className="sm:min-w-[16rem]">
-                  Quero acessar o guia
-                  <ArrowIcon />
-                </CheckoutCta>
-              </div>
+            <CheckoutCta location="offer" className="btn-block mt-9 text-lg">
+              Comprar por {formattedPrice}
+            </CheckoutCta>
+            <p className="mt-4 text-center text-[0.9375rem] text-fg-2">Acesso após a confirmação do pagamento.</p>
 
-              <div className="mt-10 grid gap-4 border-t border-line pt-6 text-[0.9375rem] leading-relaxed text-fg-2 sm:grid-cols-2 sm:gap-10">
-                <p>{checkout.delivery}</p>
-                <p>
-                  Você pode desistir em até {refund.legalDays} dias após a compra, com devolução do valor pago,
-                  conforme o art. 49 do Código de Defesa do Consumidor.{" "}
-                  <a href="#duvidas" className="text-fg underline hover:text-white">
-                    Como pedir
-                  </a>
-                </p>
-              </div>
+            <div className="mt-7 grid gap-2 border-t border-line pt-6 text-center text-sm leading-relaxed text-fg-2">
+              <p>{paymentLine}</p>
+              <p>
+                Você pode desistir em até {refund.legalDays} dias, com devolução do valor (CDC, art. 49).{" "}
+                <a href="#duvidas" className="text-fg underline hover:text-white">
+                  Como pedir
+                </a>
+              </p>
             </div>
           </div>
         </div>
+
+        <p className="mx-auto mt-14 max-w-3xl border-t border-line pt-8 text-center text-2xl font-bold tracking-[-0.02em] sm:text-3xl" data-reveal>
+          Um material para estudar e aplicar no seu ritmo.
+        </p>
       </div>
     </section>
   );

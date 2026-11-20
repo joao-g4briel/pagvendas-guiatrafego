@@ -53,7 +53,7 @@
       "refersTo": "button-primary",
       "description": "Ação de compra; todos levam ao checkout configurado.",
       "html": "<a class=\"ds-btn-primary\" href=\"#\">Quero acessar o guia <svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 9h11M10 4.5 14.5 9 10 13.5\" stroke=\"currentColor\" stroke-width=\"1.6\"/></svg></a>",
-      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:12px 22px;background:#f5f5f5;color:#080808;border:1px solid #f5f5f5;border-radius:4px;font:600 16px/1.2 'Space Grotesk',system-ui,sans-serif;text-decoration:none;transition:background-color 180ms cubic-bezier(.25,1,.5,1),transform 220ms cubic-bezier(.16,1,.3,1),box-shadow 220ms cubic-bezier(.16,1,.3,1)}.ds-btn-primary:hover{background:#fff;transform:translateY(-2px);box-shadow:0 10px 24px -12px rgb(255 255 255/.45)}.ds-btn-primary:focus-visible{outline:2px solid #f5f5f5;outline-offset:3px}.ds-btn-primary:active{transform:none;box-shadow:none}"
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:12px 22px;background:#f5f5f5;color:#080808;border:1px solid #f5f5f5;border-radius:8px;font:600 16px/1.2 Montserrat,system-ui,sans-serif;text-decoration:none;transition:background-color 180ms cubic-bezier(.25,1,.5,1),transform 220ms cubic-bezier(.16,1,.3,1),box-shadow 220ms cubic-bezier(.16,1,.3,1)}.ds-btn-primary:hover{background:#fff;transform:translateY(-2px);box-shadow:0 10px 24px -12px rgb(255 255 255/.45)}.ds-btn-primary:focus-visible{outline:2px solid #f5f5f5;outline-offset:3px}.ds-btn-primary:active{transform:none;box-shadow:none}"
     },
     {
       "name": "Botão fantasma",
@@ -61,7 +61,7 @@
       "refersTo": "button-ghost",
       "description": "Ação secundária, como ver a prévia.",
       "html": "<a class=\"ds-btn-ghost\" href=\"#\">Ver uma prévia</a>",
-      "css": ".ds-btn-ghost{display:inline-flex;align-items:center;min-height:48px;padding:12px 22px;background:transparent;color:#f5f5f5;border:1px solid #3a3a3a;border-radius:4px;font:600 16px/1.2 'Space Grotesk',system-ui,sans-serif;text-decoration:none;transition:border-color 180ms,background-color 180ms,transform 220ms cubic-bezier(.16,1,.3,1)}.ds-btn-ghost:hover{border-color:#f5f5f5;background:rgb(245 245 245/.06);transform:translateY(-2px)}.ds-btn-ghost:focus-visible{outline:2px solid #f5f5f5;outline-offset:3px}"
+      "css": ".ds-btn-ghost{display:inline-flex;align-items:center;min-height:48px;padding:12px 22px;background:transparent;color:#f5f5f5;border:1px solid #3a3a3a;border-radius:8px;font:600 16px/1.2 Montserrat,system-ui,sans-serif;text-decoration:none;transition:border-color 180ms,background-color 180ms,transform 220ms cubic-bezier(.16,1,.3,1)}.ds-btn-ghost:hover{border-color:#f5f5f5;background:rgb(245 245 245/.06);transform:translateY(-2px)}.ds-btn-ghost:focus-visible{outline:2px solid #f5f5f5;outline-offset:3px}"
     },
     {
       "name": "Campo monetário",
@@ -69,21 +69,21 @@
       "refersTo": "field",
       "description": "Campo da calculadora com prefixo R$.",
       "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Preço de venda</span><span class=\"ds-field-wrap\"><span class=\"ds-field-prefix\">R$</span><input class=\"ds-field-input\" inputmode=\"decimal\" value=\"120\"></span></label>",
-      "css": ".ds-field{display:grid;gap:10px;font-family:'Space Grotesk',system-ui,sans-serif;color:#f5f5f5}.ds-field-label{font-weight:500;font-size:15px}.ds-field-wrap{position:relative}.ds-field-prefix{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#8c8c8c}.ds-field-input{width:100%;min-height:48px;padding:10px 14px 10px 44px;background:#080808;border:1px solid #3a3a3a;border-radius:4px;color:#f5f5f5;font-size:18px;font-variant-numeric:tabular-nums}.ds-field-input:hover{border-color:#555}.ds-field-input:focus-visible{outline:2px solid #f5f5f5;outline-offset:2px;border-color:#f5f5f5}"
+      "css": ".ds-field{display:grid;gap:10px;font-family:Montserrat,system-ui,sans-serif;color:#f5f5f5}.ds-field-label{font-weight:500;font-size:15px}.ds-field-wrap{position:relative}.ds-field-prefix{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#8c8c8c}.ds-field-input{width:100%;min-height:48px;padding:10px 14px 10px 44px;background:#080808;border:1px solid #3a3a3a;border-radius:8px;color:#f5f5f5;font-size:18px;font-variant-numeric:tabular-nums}.ds-field-input:hover{border-color:#555}.ds-field-input:focus-visible{outline:2px solid #f5f5f5;outline-offset:2px;border-color:#f5f5f5}"
     },
     {
       "name": "Navegação",
       "kind": "nav",
       "description": "Cabeçalho com marca, três links e compra.",
       "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-brand\">Metodaria</span><a href=\"#\">Conteúdo</a><a href=\"#\">Prévia</a><a href=\"#\">Dúvidas</a></nav>",
-      "css": ".ds-nav{display:flex;align-items:center;gap:36px;height:64px;padding:0 24px;background:#080808;border-bottom:1px solid #262626;font-family:'Space Grotesk',system-ui,sans-serif}.ds-nav-brand{font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#f5f5f5;margin-right:auto}.ds-nav a{color:#a6a6a6;text-decoration:none;font-size:15px;transition:color 150ms}.ds-nav a:hover{color:#f5f5f5}.ds-nav a:focus-visible{outline:2px solid #f5f5f5;outline-offset:3px}"
+      "css": ".ds-nav{display:flex;align-items:center;gap:36px;height:64px;padding:0 24px;background:#080808;border-bottom:1px solid #262626;font-family:Montserrat,system-ui,sans-serif}.ds-nav-brand{font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#f5f5f5;margin-right:auto}.ds-nav a{color:#a6a6a6;text-decoration:none;font-size:15px;transition:color 150ms}.ds-nav a:hover{color:#f5f5f5}.ds-nav a:focus-visible{outline:2px solid #f5f5f5;outline-offset:3px}"
     },
     {
       "name": "Linha de sumário",
       "kind": "custom",
       "description": "Módulo, título, pontilhado e página, como no índice do PDF.",
       "html": "<div class=\"ds-toc\"><span class=\"ds-toc-label\">Módulo 06</span><span class=\"ds-toc-title\">Leilão, orçamento e posicionamentos</span><span class=\"ds-toc-leader\"></span><span class=\"ds-toc-page\">p. 15</span></div>",
-      "css": ".ds-toc{display:flex;align-items:baseline;gap:12px;padding:20px 0;border-bottom:1px solid #262626;font-family:'Space Grotesk',system-ui,sans-serif;color:#f5f5f5}.ds-toc-label,.ds-toc-page{font-size:14px;color:#8c8c8c;font-variant-numeric:tabular-nums}.ds-toc-label{width:96px;flex-shrink:0}.ds-toc-title{font-weight:500}.ds-toc-leader{flex:1;min-width:24px;border-bottom:1px dotted currentColor;opacity:.45;margin-bottom:.38em}"
+      "css": ".ds-toc{display:flex;align-items:baseline;gap:12px;padding:20px 0;border-bottom:1px solid #262626;font-family:Montserrat,system-ui,sans-serif;color:#f5f5f5}.ds-toc-label,.ds-toc-page{font-size:14px;color:#8c8c8c;font-variant-numeric:tabular-nums}.ds-toc-label{width:96px;flex-shrink:0}.ds-toc-title{font-weight:500}.ds-toc-leader{flex:1;min-width:24px;border-bottom:1px dotted currentColor;opacity:.45;margin-bottom:.38em}"
     },
     {
       "name": "Painel",
@@ -91,7 +91,7 @@
       "refersTo": "panel",
       "description": "Superfície da calculadora, da oferta e do checklist.",
       "html": "<div class=\"ds-panel\"><h3>Quanto você pode pagar por uma venda?</h3><p>CPA desejado <strong>R$ 24,00</strong></p></div>",
-      "css": ".ds-panel{background:#141414;border:1px solid #262626;border-radius:4px;padding:48px;color:#f5f5f5;font-family:'Space Grotesk',system-ui,sans-serif}.ds-panel h3{margin:0 0 16px;font-size:30px;font-weight:700;letter-spacing:-.02em}.ds-panel p{color:#a6a6a6}.ds-panel strong{color:#f5f5f5;font-size:48px;font-variant-numeric:tabular-nums;display:block}"
+      "css": ".ds-panel{background:#141414;border:1px solid #262626;border-radius:8px;padding:48px;color:#f5f5f5;font-family:Montserrat,system-ui,sans-serif}.ds-panel h3{margin:0 0 16px;font-size:30px;font-weight:700;letter-spacing:-.02em}.ds-panel p{color:#a6a6a6}.ds-panel strong{color:#f5f5f5;font-size:48px;font-variant-numeric:tabular-nums;display:block}"
     }
   ],
   "narrative": {
@@ -99,7 +99,7 @@
     "overview": "A página se comporta como o próprio PDF: capa preta por fora, miolo claro por dentro. A gramática vem do arquivo, com cabeçalho corrido em caixa alta sobre uma linha fina, referências de página, sumário com pontilhado até o número da página e tabelas separadas só por linhas horizontais. O arco cinza largo da capa reaparece cortado pela borda das seções escuras. O tom é editorial e contido: a energia vem da escala tipográfica e do contraste preto e branco, não de cor.",
     "keyCharacteristics": [
       "Monocromia estrita: preto, branco e cinzas neutros, com uma única seção clara (a amostra).",
-      "Space Grotesk em toda a interface; caixa alta só no display.",
+      "Montserrat em toda a interface; caixa alta só no display.",
       "Linhas de 1 px como estrutura; superfícies elevadas só para a calculadora, a oferta e o checklist.",
       "Números em algarismos tabulares sempre que comparam valores ou páginas."
     ],

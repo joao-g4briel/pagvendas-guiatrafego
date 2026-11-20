@@ -35,7 +35,7 @@ O preço aparece em todos os lugares a partir de `siteConfig.price.amount`.
 
 ### Trocar o checkout
 
-Todos os botões de compra (cabeçalho, menu, hero, sumário, oferta, CTA final e barra do celular) usam `siteConfig.checkout.url`. Para trocar o link, mude **uma** destas opções:
+Todos os botões de compra (cabeçalho, menu, hero, prévia, oferta, CTA final e barra do celular) usam `siteConfig.checkout.url`. Para trocar o link, mude **uma** destas opções:
 
 - `DEFAULT_CHECKOUT_URL` em `src/config/site.ts` (hoje `https://pay.cakto.com.br/tsduujj_1343853`); ou
 - a variável `NEXT_PUBLIC_CHECKOUT_URL` na Vercel.
@@ -48,7 +48,7 @@ O PDF completo **não** fica no projeto (`*.pdf` está no `.gitignore`). As pág
 
 ```bash
 pip install pymupdf pillow
-python scripts/preparar-ativos.py --pdf "<guia.pdf>" --capa "<capa.png>" --icone "<favicon_512.png>" --fonte "<SpaceGrotesk[wght].ttf>"
+python scripts/preparar-ativos.py --pdf "<guia.pdf>" --capa "<capa.png>" --icone "<favicon_512.png>" --fonte "<Montserrat[wght].ttf>"
 ```
 
 Para mudar as páginas da amostra, edite `PAGINAS_AMOSTRA` no script e `previewPages` em `src/content/guia.ts`.
@@ -83,7 +83,7 @@ Com o build rodando em `npx next start -p 3100`:
 
 ```bash
 pip install playwright
-python tests/interacoes.py --url http://localhost:3100   # CTAs, FAQ, sumário, lightbox, menu, barra móvel, reduced motion
+python tests/interacoes.py --url http://localhost:3100   # CTAs, dúvidas, sumário, lightbox, menu, barra móvel, reduced motion
 python tests/capturas.py --url http://localhost:3100     # capturas em 360, 390, 768 e 1440 px (tests/artifacts/)
 ```
 
@@ -108,7 +108,7 @@ Fornecer a URL do checkout não comprova que pagamento, entrega ou medição for
 src/
   app/            layout, página, termos, privacidade, ícones e imagem de compartilhamento
   components/     seções (Server Components) e ilhas cliente: menu, accordion,
-                  lightbox, capa com inclinação, calculadora, barra móvel, consentimento
+                  lightbox, tablet com inclinação, barra móvel, consentimento
   config/site.ts  configuração central
   content/guia.ts textos extraídos do PDF
   lib/analytics.ts consentimento e eventos

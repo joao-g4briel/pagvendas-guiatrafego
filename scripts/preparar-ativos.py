@@ -9,7 +9,7 @@ Uso (na raiz do projeto):
         --pdf "C:/caminho/Guia_Gestao_de_Trafego_Metodaria.pdf" \
         --capa "C:/caminho/capa-vertical.png" \
         --icone "C:/caminho/10_favicon_512.png" \
-        --fonte "C:/caminho/SpaceGrotesk[wght].ttf"
+        --fonte "C:/caminho/Montserrat[wght].ttf"
 
 Requisitos: pip install pymupdf pillow
 Ao mudar PAGINAS_AMOSTRA, atualize também src/content/guia.ts (amostra).
@@ -24,7 +24,7 @@ import pymupdf
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 RAIZ = Path(__file__).resolve().parent.parent
-PAGINAS_AMOSTRA = [2, 5, 20, 43]  # numeração do PDF (1 = capa)
+PAGINAS_AMOSTRA = [2, 37]  # numeração do PDF (1 = capa)
 DPI_AMOSTRA = 170
 
 FUNDO = (8, 8, 8)
@@ -50,7 +50,7 @@ def copiar_capa(capa: Path) -> Image.Image:
     destino = RAIZ / "public" / "capa"
     destino.mkdir(parents=True, exist_ok=True)
     img = Image.open(capa).convert("RGB")
-    arquivo = destino / "guia-gestao-de-trafego.png"
+    arquivo = destino / "guia-trafego-pago.png"
     img.save(arquivo, optimize=True)
     print(f"capa: {arquivo.relative_to(RAIZ)} ({img.width}x{img.height})")
     return img
@@ -96,10 +96,10 @@ def gerar_open_graph(capa: Image.Image, caminho_fonte: Path) -> None:
 
     desenho = ImageDraw.Draw(og)
     margem = 72
-    desenho.text((margem, 70), "METODARIA", font=fonte(caminho_fonte, 24, 700), fill=TEXTO)
+    desenho.text((margem, 70), "METODARIA", font=fonte(caminho_fonte, 24, 800), fill=TEXTO)
     desenho.line((margem, 112, x_capa - 56, 112), fill=(60, 60, 60), width=1)
 
-    titulo = fonte(caminho_fonte, 66, 700)
+    titulo = fonte(caminho_fonte, 62, 800)
     desenho.text((margem, 190), "Antes de", font=titulo, fill=TEXTO)
     desenho.text((margem, 262), "impulsionar,", font=titulo, fill=TEXTO)
     desenho.text((margem, 334), "tenha um plano.", font=titulo, fill=TEXTO)

@@ -10,7 +10,7 @@
 
 import { siteConfig } from "@/config/site";
 
-export type CtaLocation = "header" | "menu" | "hero" | "contents" | "offer" | "final" | "mobile_bar";
+export type CtaLocation = "header" | "menu" | "hero" | "preview" | "offer" | "final" | "mobile_bar";
 
 export type ConsentState = "granted" | "denied";
 

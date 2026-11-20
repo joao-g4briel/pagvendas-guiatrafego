@@ -46,39 +46,32 @@ def desktop(p, url: str) -> None:
     check(all(h[1] == CHECKOUT for h in hrefs), f"{len(hrefs)} links de compra apontam para {CHECKOUT}")
     check(all(not h[2] for h in hrefs), "links de compra abrem na mesma aba (sem target)")
     check(
-        {"header", "hero", "offer", "final", "menu"}.issubset(set(locais)),
-        f"CTAs presentes em cabeçalho, menu, hero, oferta e final ({', '.join(locais)})",
+        {"header", "hero", "preview", "offer", "final", "menu"}.issubset(set(locais)),
+        f"CTAs presentes em cabeçalho, menu, hero, prévia, oferta e final ({', '.join(locais)})",
     )
-    previa = page.get_by_role("link", name="Ver uma prévia")
-    check(previa.get_attribute("href") == "#previa", "“Ver uma prévia” leva à seção #previa, não ao checkout")
+    previas = page.get_by_role("link", name="Ver uma prévia").evaluate_all("els => els.map(e => e.getAttribute('href'))")
+    check(len(previas) >= 1 and all(h == "#previa" for h in previas), f"“Ver uma prévia” leva à seção #previa ({len(previas)} links), não ao checkout")
     navs = page.locator("nav[aria-label=Principal] a").evaluate_all("els => els.map(e => e.getAttribute('href'))")
     check(navs == ["/#conteudo", "/#previa", "/#duvidas"], f"navegação do cabeçalho: {navs}")
 
     # H1 único
     check(page.locator("h1").count() == 1, "a página tem um único H1")
 
-    # Calculadora com o exercício do Anexo B: 200 / 120 / 30 -> CPA 50, ROAS 4
-    inputs = page.locator("input[inputmode=decimal]")
-    inputs.nth(0).fill("200")
-    inputs.nth(1).fill("120")
-    inputs.nth(2).fill("30")
-    texto = page.locator("dl").first.inner_text().replace(" ", " ")
-    check("R$ 80,00" in texto and "R$ 50,00" in texto and "4,00" in texto, "calculadora reproduz o gabarito do Anexo B")
-    inputs.nth(1).fill("250")
-    check("não sobra margem" in page.locator("[aria-live=polite]").first.inner_text(), "calculadora trata margem negativa")
-    inputs.nth(1).fill("78")
-
     # Inclinação da capa com ponteiro preciso
     capa = page.locator("[data-tilt-zone] img").first
+    page.evaluate("window.scrollTo({top: 0, behavior: 'instant'})")
+    page.wait_for_timeout(1200)
     antes = capa.evaluate("el => getComputedStyle(el.closest('[style*=perspective]')).transform")
     page.mouse.move(300, 300)
     page.mouse.move(1300, 200, steps=8)
     page.wait_for_timeout(700)
     depois = capa.evaluate("el => getComputedStyle(el.closest('[style*=perspective]')).transform")
-    check(antes != depois, "capa inclina com o ponteiro no desktop")
+    check(antes != depois, "tablet inclina com o ponteiro no desktop")
 
     # FAQ
-    faq = page.locator("#duvidas button[aria-expanded]").first
+    primeira = page.locator("#duvidas button[aria-expanded]").first
+    check(primeira.get_attribute("aria-expanded") == "true", "primeira dúvida começa aberta")
+    faq = page.locator("#duvidas button[aria-expanded]").nth(1)
     faq.scroll_into_view_if_needed()
     faq.click()
     check(faq.get_attribute("aria-expanded") == "true", "FAQ abre (aria-expanded=true)")
@@ -90,11 +83,11 @@ def desktop(p, url: str) -> None:
     check(faq.get_attribute("aria-expanded") == "false" and painel.get_attribute("inert") is not None, "FAQ fecha pelo teclado")
 
     # Sumário
-    modulo = page.locator("#conteudo button[aria-expanded]").first
-    modulo.scroll_into_view_if_needed()
-    modulo.click()
+    sumario = page.locator("#conteudo button[aria-expanded]").first
+    sumario.scroll_into_view_if_needed()
+    sumario.click()
     page.wait_for_timeout(450)
-    check(page.get_by_text("Lição 1.3 Quanto você pode pagar por uma venda").is_visible(), "sumário abre o Módulo 01 com as lições")
+    check(page.get_by_text("Fundamentos e economia do anúncio").is_visible() and page.get_by_text("Glossário de consulta rápida").is_visible(), "sumário completo abre com módulos e anexos")
 
     # Lightbox
     miniatura = page.locator("#previa button[aria-label^='Ampliar']").first
@@ -103,12 +96,12 @@ def desktop(p, url: str) -> None:
     miniatura.click()
     dialog = page.locator("dialog.lightbox")
     expect(dialog).to_have_attribute("open", "")
-    check("1 de 4" in page.locator("#lightbox-title").inner_text(), "lightbox abre na página 1 de 4")
+    check("1 de 2" in page.locator("#lightbox-title").inner_text(), "lightbox abre na página 1 de 2")
     page.keyboard.press("ArrowRight")
-    check("2 de 4" in page.locator("#lightbox-title").inner_text(), "seta direita avança")
+    check("2 de 2" in page.locator("#lightbox-title").inner_text(), "seta direita avança")
     page.keyboard.press("ArrowLeft")
     page.keyboard.press("ArrowLeft")
-    check("4 de 4" in page.locator("#lightbox-title").inner_text(), "seta esquerda volta e circula")
+    check("2 de 2" in page.locator("#lightbox-title").inner_text(), "seta esquerda volta e circula")
     for _ in range(6):
         page.keyboard.press("Tab")
     dentro = page.evaluate("document.activeElement.closest('dialog.lightbox') !== null")
@@ -180,7 +173,7 @@ def mobile(p, url: str) -> None:
     page.touchscreen.tap(300, 900 - 200)
     page.wait_for_timeout(500)
     t2 = zona.evaluate("el => getComputedStyle(el).transform")
-    check(t1 == t2, "capa não se move no celular")
+    check(t1 == t2, "tablet não se move no celular")
 
     # Alvos de toque
     pequenos = page.evaluate(
@@ -209,7 +202,7 @@ def reduzido(p, url: str) -> None:
     page.mouse.move(200, 600, steps=8)
     page.wait_for_timeout(600)
     t2 = page.locator("[data-tilt-zone] [style*=perspective]").first.evaluate("el => getComputedStyle(el).transform")
-    check(t == t2, "redução de movimento: capa não inclina")
+    check(t == t2, "redução de movimento: tablet não inclina")
     browser.close()
 
 

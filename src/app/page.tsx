@@ -1,9 +1,7 @@
-import { Audience } from "@/components/audience";
 import { Contents } from "@/components/contents";
 import { Faq } from "@/components/faq";
 import { FinalCta } from "@/components/final-cta";
 import { Hero } from "@/components/hero";
-import { Included } from "@/components/included";
 import { MobileBuyBar } from "@/components/mobile-buy-bar";
 import { Offer } from "@/components/offer";
 import { Preview } from "@/components/preview";
@@ -20,8 +18,6 @@ export default function Home() {
         <Problems />
         <Contents />
         <Preview />
-        <Included />
-        <Audience />
         <Offer />
         <Faq />
         <FinalCta />

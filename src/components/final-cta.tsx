@@ -1,30 +1,27 @@
-import { CoverArcs } from "@/components/arcs";
 import { ArrowIcon, CheckoutCta } from "@/components/checkout-cta";
 import { formattedPrice, siteConfig } from "@/config/site";
 
 export function FinalCta() {
   return (
-    <section
-      id="compra-final"
-      aria-labelledby="final-title"
-      className="relative overflow-hidden border-t border-line py-24 sm:py-32 lg:py-40"
-    >
-      <CoverArcs className="pointer-events-none absolute -bottom-[30%] -right-[70%] w-[150%] max-w-none sm:-right-[30%] sm:w-[95%] lg:-bottom-[48%] lg:-right-[10%] lg:w-[52%]" />
-      <div className="shell relative">
-        <h2 id="final-title" className="display max-w-5xl !text-[clamp(2.25rem,1rem+4.2vw,4.75rem)]" data-reveal>
-          Antes do próximo impulsionamento, calcule quanto pode pagar por uma venda.
-        </h2>
-        <p className="mt-8 max-w-xl text-lg leading-relaxed text-fg-2" data-reveal>
-          O guia começa por essa conta e segue até a leitura dos resultados, em {siteConfig.product.pages} páginas.
-        </p>
-        <div className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-8" data-reveal>
-          <CheckoutCta location="final">
+    <section id="compra-final" aria-labelledby="final-title" className="pb-20 sm:pb-24">
+      <div className="shell">
+        <div
+          className="flex flex-col gap-7 rounded-2xl border border-line bg-surface px-6 py-9 sm:px-10 sm:py-12 lg:flex-row lg:items-center lg:justify-between lg:px-14"
+          data-reveal
+        >
+          <div>
+            <h2 id="final-title" className="text-[2rem] font-extrabold leading-tight tracking-[-0.03em] sm:text-5xl">
+              Planeje. Anuncie. Analise.
+            </h2>
+            <p className="mt-3 text-lg text-fg-2 sm:text-xl">
+              {siteConfig.product.name} · <span className="tabular font-bold text-fg">{formattedPrice}</span>,{" "}
+              {siteConfig.price.terms}.
+            </p>
+          </div>
+          <CheckoutCta location="final" className="shrink-0 sm:min-w-[17rem]">
             Quero acessar o guia
             <ArrowIcon />
           </CheckoutCta>
-          <p className="text-fg-2">
-            <span className="tabular font-semibold text-fg">{formattedPrice}</span> · {siteConfig.price.terms}
-          </p>
         </div>
       </div>
     </section>

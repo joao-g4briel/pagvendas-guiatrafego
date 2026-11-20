@@ -9,7 +9,7 @@ export const SALES_CLOSED_EVENT = "metodaria:sales-closed";
 type CheckoutCtaProps = {
   location: CtaLocation;
   children: ReactNode;
-  variant?: "primary" | "ghost";
+  variant?: "primary" | "ghost" | "dark";
   size?: "default" | "compact";
   className?: string;
 };
@@ -39,7 +39,7 @@ export function CheckoutCta({
   className = "",
 }: CheckoutCtaProps) {
   const url = siteConfig.checkout.url;
-  const classes = `btn ${variant === "primary" ? "btn-primary" : "btn-ghost"} ${
+  const classes = `btn btn-${variant} ${
     size === "compact" ? "btn-compact" : ""
   } ${className}`;
 

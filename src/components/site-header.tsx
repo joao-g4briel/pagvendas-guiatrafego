@@ -17,14 +17,14 @@ export function SiteHeader() {
       >
         Pular para o conteúdo
       </a>
-      <div className="shell flex h-16 items-center justify-between gap-6">
+      <div className="shell flex h-[4.5rem] items-center justify-between gap-6">
         <Link
           href="/"
-          className="inline-flex min-h-11 items-center text-[0.9375rem] font-bold uppercase tracking-[0.12em] text-fg no-underline"
+          className="inline-flex min-h-11 items-center text-xl font-extrabold tracking-[0.02em] text-fg no-underline sm:text-2xl"
           aria-label="Metodaria, início"
           translate="no"
         >
-          Metodaria
+          METODARIA
         </Link>
 
         <nav aria-label="Principal" className="hidden lg:block">
@@ -33,7 +33,7 @@ export function SiteHeader() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-[0.9375rem] text-fg-2 no-underline transition-colors duration-150 hover:text-fg"
+                  className="text-base font-medium text-fg-2 no-underline transition-colors duration-150 hover:text-fg"
                 >
                   {link.label}
                 </a>

@@ -1,50 +1,32 @@
-import { PlanCalculator } from "@/components/plan-calculator";
-import { problems } from "@/content/guia";
+import { situations } from "@/content/guia";
 
 export function Problems() {
   return (
-    <section aria-labelledby="problemas-title" className="border-t border-line py-20 sm:py-28 lg:py-36">
+    <section aria-labelledby="planeje-title" className="py-20 sm:py-24 lg:py-28">
       <div className="shell">
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
-          <h2 id="problemas-title" className="section-title lg:col-span-8" data-reveal>
-            Onde o dinheiro dos primeiros anúncios costuma se perder
+        <div className="grid gap-5 lg:grid-cols-12 lg:items-end">
+          <h2 id="planeje-title" className="section-title lg:col-span-7" data-reveal>
+            Planeje antes de investir.
           </h2>
-          <p className="max-w-md leading-relaxed text-fg-2 lg:col-span-4" data-reveal>
-            Quatro situações comuns de quem está começando, ao lado da parte do guia que trata de cada uma. O guia
-            mostra o raciocínio e as contas; a experiência vem de aplicar em um projeto seu.
+          <p className="max-w-md text-lg leading-relaxed text-fg-2 lg:col-span-5 lg:justify-self-end" data-reveal>
+            Situações comuns de quem começa a anunciar, e a parte do guia que trata de cada uma.
           </p>
         </div>
 
-        <div className="mt-14 lg:mt-20">
-          <div
-            aria-hidden="true"
-            className="running-head hidden grid-cols-12 gap-8 pb-3 text-fg-3 lg:grid"
-          >
-            <span className="col-span-5">Situação</span>
-            <span className="col-span-5">O que o guia ensina</span>
-            <span className="col-span-2 text-right">No guia</span>
-          </div>
-          <ul className="border-b border-line">
-            {problems.map((item, index) => (
-              <li
-                key={item.situation}
-                className="rule-top grid gap-4 py-8 [--rule-color:var(--color-line)] lg:grid-cols-12 lg:gap-8 lg:py-10"
-                data-reveal
-                style={{ ["--rv-d" as string]: `${index * 60}ms` }}
-              >
-                <h3 className="text-[1.375rem] font-semibold leading-snug tracking-[-0.015em] lg:col-span-5 lg:text-2xl">
-                  {item.situation}
-                </h3>
-                <p className="max-w-[60ch] leading-relaxed text-fg-2 lg:col-span-5">{item.answer}</p>
-                <p className="tabular text-sm text-fg-3 lg:col-span-2 lg:text-right">{item.where}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-16 lg:mt-24" data-reveal>
-          <PlanCalculator />
-        </div>
+        <ul className="mt-12 grid border-t border-line-strong sm:grid-cols-2 lg:mt-16">
+          {situations.map((item, index) => (
+            <li
+              key={item.question}
+              className={`border-b border-line py-7 sm:py-9 ${index % 2 === 1 ? "sm:border-l sm:pl-10" : "sm:pr-10"}`}
+              data-reveal
+              style={{ ["--rv-d" as string]: `${(index % 2) * 70}ms` }}
+            >
+              <h3 className="text-xl font-bold leading-snug tracking-[-0.015em] sm:text-2xl">{item.question}</h3>
+              <p className="mt-3 max-w-[46ch] leading-relaxed text-fg-2">{item.answer}</p>
+              <p className="tabular mt-4 text-sm font-medium text-fg-3">{item.where}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

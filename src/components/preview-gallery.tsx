@@ -48,42 +48,39 @@ export function PreviewGallery({ pages }: { pages: PreviewPage[] }) {
 
   return (
     <>
-      <ul className="grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8">
+      <ul className="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-8">
         {pages.map((page, i) => (
-          <li key={page.page} data-reveal style={{ ["--rv-d" as string]: `${i * 70}ms` }}>
+          <li key={page.page} data-reveal style={{ ["--rv-d" as string]: `${i * 80}ms` }}>
             <button
               ref={(node) => {
                 triggerRefs.current[i] = node;
               }}
               type="button"
               onClick={() => open(i)}
-              className="group block w-full text-left"
+              className="group block w-full text-center"
               aria-label={`Ampliar página ${page.page}: ${page.title}`}
             >
-              <span className="relative block overflow-hidden rounded-xs bg-white shadow-[0_1px_2px_rgb(0_0_0/0.08),0_14px_30px_-14px_rgb(0_0_0/0.35)] ring-1 ring-black/10 transition-[transform,box-shadow] duration-300 ease-out-expo group-hover:-translate-y-1 group-hover:shadow-[0_2px_4px_rgb(0_0_0/0.08),0_22px_40px_-16px_rgb(0_0_0/0.4)]">
+              <span className="relative block overflow-hidden rounded-sm bg-white shadow-[0_2px_4px_rgb(0_0_0/0.06),0_24px_44px_-20px_rgb(0_0_0/0.4)] ring-1 ring-black/10 transition-[transform,box-shadow] duration-300 ease-out-expo group-hover:-translate-y-1 group-hover:shadow-[0_2px_4px_rgb(0_0_0/0.08),0_30px_54px_-20px_rgb(0_0_0/0.45)]">
                 <Image
                   src={page.src}
                   width={1406}
                   height={1988}
                   alt={page.alt}
-                  sizes="(min-width: 64rem) 280px, (min-width: 40rem) 45vw, 46vw"
+                  sizes="(min-width: 64rem) 340px, 45vw"
                   className="block h-auto w-full"
                 />
                 <span
                   aria-hidden="true"
-                  className="absolute bottom-3 right-3 grid size-9 place-items-center rounded-full bg-paper-ink text-paper opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100"
+                  className="absolute bottom-3 right-3 grid size-10 place-items-center rounded-full bg-paper-ink text-paper shadow-md transition-transform duration-200 group-hover:scale-110"
                 >
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M7 2.5v9M2.5 7h9M11 11l3 3" stroke="currentColor" strokeWidth="1.5" />
+                    <path d="M7 2.5v9M2.5 7h9M11 11l3 3" stroke="currentColor" strokeWidth="1.6" />
                   </svg>
                 </span>
               </span>
+              <span className="mt-4 block text-base font-bold leading-snug text-paper-ink sm:text-lg">{page.title}</span>
+              <span className="mt-1 block text-sm text-paper-fg-2 sm:text-base">Toque para ampliar</span>
             </button>
-            <p className="mt-4 flex items-baseline justify-between gap-3">
-              <span className="font-semibold leading-snug text-paper-ink">{page.title}</span>
-              <span className="tabular shrink-0 text-sm text-paper-fg-2">p. {page.page}</span>
-            </p>
-            <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-paper-fg-2">{page.caption}</p>
           </li>
         ))}
       </ul>

@@ -2,29 +2,28 @@
 
 /* ── Tokens ─────────────────────────────────────────────── */
 @theme {
-  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, "Segoe UI", Arial, sans-serif;
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, "Segoe UI", Arial, sans-serif;
 
   --color-ink: #080808;
   --color-surface: #141414;
-  --color-surface-2: #1b1b1b;
+  --color-surface-2: #1c1c1c;
   --color-line: #262626;
   --color-line-strong: #3a3a3a;
-  --color-arc: #1f2022;
   --color-fg: #f5f5f5;
-  --color-fg-2: #a6a6a6;
+  --color-fg-2: #a8a8a8;
   --color-fg-3: #8c8c8c;
 
-  --color-paper: #f4f4f2;
-  --color-paper-2: #e9e9e6;
-  --color-paper-line: #d4d4cf;
-  --color-paper-ink: #111111;
-  --color-paper-fg-2: #555555;
+  --color-paper: #f2f2f0;
+  --color-paper-2: #e7e7e4;
+  --color-paper-line: #cfcfca;
+  --color-paper-ink: #0d0d0d;
+  --color-paper-fg-2: #4f4f4f;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
 
-  --text-display: clamp(2.5rem, 0.95rem + 5.2vw, 5.25rem);
-  --text-section: clamp(2rem, 1.2rem + 2.6vw, 3.5rem);
+  --text-display: clamp(2.5rem, 1rem + 4.6vw, 4.75rem);
+  --text-section: clamp(2rem, 1.15rem + 2.9vw, 3.75rem);
 }
 
 /* ── Base ───────────────────────────────────────────────── */
@@ -34,6 +33,17 @@
     background-color: var(--color-ink);
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
+    scrollbar-color: var(--color-line-strong) var(--color-ink);
+    /* âncoras e foco não ficam sob o cabeçalho fixo (desktop) nem sob a barra de compra (celular) */
+    scroll-padding-top: 1rem;
+    scroll-padding-bottom: 6rem;
+  }
+
+  @media (min-width: 64rem) {
+    html {
+      scroll-padding-top: 5.5rem;
+      scroll-padding-bottom: 1rem;
+    }
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -46,7 +56,7 @@
     background-color: var(--color-ink);
     color: var(--color-fg);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01" 0;
+    font-weight: 500;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -64,32 +74,11 @@
   :focus-visible {
     outline: 2px solid var(--color-fg);
     outline-offset: 3px;
-    border-radius: 2px;
+    border-radius: 4px;
   }
 
   .paper :focus-visible {
     outline-color: var(--color-paper-ink);
-  }
-
-  /* Âncoras e foco não ficam sob o cabeçalho fixo (desktop) nem sob a barra de compra (celular). */
-  html {
-    scroll-padding-top: 1rem;
-    scroll-padding-bottom: 6rem;
-  }
-
-  @media (min-width: 64rem) {
-    html {
-      scroll-padding-top: 5.5rem;
-      scroll-padding-bottom: 1rem;
-    }
-  }
-
-  a,
-  button,
-  input,
-  summary {
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
   }
 
   h1,
@@ -105,26 +94,26 @@
   }
 
   a {
-    text-underline-offset: 0.2em;
+    text-underline-offset: 0.22em;
     text-decoration-thickness: 1px;
   }
 
-  input {
-    caret-color: var(--color-fg);
-  }
-
-  html {
-    scrollbar-color: var(--color-line-strong) var(--color-ink);
+  a,
+  button,
+  input,
+  summary {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
-/* ── Utilitários do mundo editorial ─────────────────────── */
+/* ── Componentes do mundo ───────────────────────────────── */
 @layer components {
   .shell {
     width: 100%;
-    max-width: 82rem;
+    max-width: 80rem;
     margin-inline: auto;
-    padding-inline: 1rem;
+    padding-inline: 1.25rem;
   }
 
   @media (min-width: 48rem) {
@@ -139,26 +128,24 @@
     }
   }
 
-  /* Cabeçalho corrido, como o topo das páginas do PDF. */
-  .running-head {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
+  .label {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
   }
 
   .display {
     font-size: var(--text-display);
-    font-weight: 700;
-    line-height: 0.94;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
   }
 
   .section-title {
     font-size: var(--text-section);
-    font-weight: 700;
-    line-height: 1.02;
+    font-weight: 800;
+    line-height: 1.06;
     letter-spacing: -0.03em;
   }
 
@@ -166,14 +153,13 @@
     font-variant-numeric: tabular-nums;
   }
 
-  /* Pontilhado de sumário entre título e página. */
   .leader {
     flex: 1 1 auto;
     min-width: 1.5rem;
     align-self: end;
     margin-bottom: 0.38em;
     border-bottom: 1px dotted currentColor;
-    opacity: 0.45;
+    opacity: 0.4;
   }
 }
 
@@ -184,12 +170,12 @@
     align-items: center;
     justify-content: center;
     gap: 0.625rem;
-    min-height: 3rem;
-    padding: 0.75rem 1.375rem;
+    min-height: 3.25rem;
+    padding: 0.875rem 1.75rem;
     border: 1px solid transparent;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 1rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1.0625rem;
     line-height: 1.2;
     text-decoration: none;
     cursor: pointer;
@@ -213,10 +199,20 @@
     border-color: var(--color-line-strong);
   }
 
+  .btn-dark {
+    background-color: var(--color-paper-ink);
+    color: #ffffff;
+    border-color: var(--color-paper-ink);
+  }
+
   .btn-compact {
     min-height: 2.75rem;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.125rem;
     font-size: 0.9375rem;
+  }
+
+  .btn-block {
+    width: 100%;
   }
 
   @media (hover: hover) and (pointer: fine) {
@@ -224,7 +220,7 @@
       background-color: #ffffff;
       border-color: #ffffff;
       transform: translateY(-2px);
-      box-shadow: 0 10px 24px -12px rgb(255 255 255 / 0.45);
+      box-shadow: 0 12px 28px -14px rgb(255 255 255 / 0.5);
     }
 
     .btn-ghost:hover {
@@ -232,16 +228,18 @@
       background-color: rgb(245 245 245 / 0.06);
       transform: translateY(-2px);
     }
+
+    .btn-dark:hover {
+      background-color: #262626;
+      border-color: #262626;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -14px rgb(0 0 0 / 0.55);
+    }
   }
 
   .btn:active {
     transform: translateY(0);
     box-shadow: none;
-  }
-
-  .btn-primary:focus-visible {
-    outline-color: var(--color-fg);
-    outline-offset: 3px;
   }
 
   .btn .btn-arrow {
@@ -252,6 +250,21 @@
     .btn:hover .btn-arrow {
       transform: translateX(3px);
     }
+  }
+
+  /* Link de texto sublinhado (ex.: "Ver uma prévia" no hero). */
+  .text-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgb(245 245 245 / 0.55);
+    transition: text-decoration-color 180ms ease-out;
+  }
+
+  .text-link:hover {
+    text-decoration-color: var(--color-fg);
   }
 }
 
@@ -276,34 +289,23 @@
   }
 }
 
+@keyframes device-in {
+  from {
+    opacity: 0;
+    transform: perspective(1500px) rotateY(-22deg) translate3d(18px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @keyframes fade {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
-  }
-}
-
-@keyframes cover-in {
-  from {
-    opacity: 0;
-    transform: perspective(1500px) rotateY(-26deg) translate3d(18px, 0, 0);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes num-swap {
-  from {
-    opacity: 0.35;
-    transform: translate3d(0, 4px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: none;
   }
 }
 
@@ -329,24 +331,10 @@
     animation-delay: var(--d, 0ms);
   }
 
-  /* A capa pousa na perspectiva, como um guia colocado sobre a mesa. */
-  .cover-in {
-    animation: cover-in 900ms var(--ease-out-expo) both;
+  /* O tablet entra girando até a perspectiva final. */
+  .device-in {
+    animation: device-in 900ms var(--ease-out-expo) both;
     animation-delay: var(--d, 0ms);
-  }
-
-  .num-swap {
-    animation: num-swap 220ms var(--ease-out-quart) both;
-  }
-
-  /* Divisórias das tabelas se desenham da esquerda para a direita ao revelar. */
-  .rv [data-reveal].rule-top:not(.is-in)::before {
-    transform: scaleX(0);
-  }
-
-  .rv [data-reveal].rule-top::before {
-    transition: transform 900ms var(--ease-out-expo);
-    transition-delay: var(--rv-d, 0ms);
   }
 
   /* Revelação de seções: só esconde quando o observador está ativo (classe .rv no <html>). */
@@ -361,32 +349,30 @@
       transform 640ms var(--ease-out-expo);
     transition-delay: var(--rv-d, 0ms);
   }
+
+  dialog.lightbox[open] .lightbox-frame {
+    animation: lightbox-in 360ms var(--ease-out-expo) both;
+  }
+
+  dialog.lightbox[open]::backdrop {
+    animation: fade 240ms ease-out both;
+  }
+
+  .page-swap {
+    animation: fade 260ms ease-out both;
+  }
 }
 
 .line-mask {
   display: block;
   overflow: clip;
   /* folga para acentos e vírgulas não serem cortados pela máscara */
-  padding-block: 0.08em 0.06em;
-  margin-block: -0.08em -0.06em;
+  padding-block: 0.1em 0.08em;
+  margin-block: -0.1em -0.08em;
 }
 
 .line-mask > span {
   display: block;
-}
-
-/* Divisória superior desenhável (tabelas e índice). */
-.rule-top {
-  position: relative;
-}
-
-.rule-top::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto;
-  height: 1px;
-  background-color: var(--rule-color, var(--color-line-strong));
-  transform-origin: left center;
 }
 
 /* Painel recolhível com altura automática animada. */
@@ -427,42 +413,4 @@ dialog.lightbox {
 
 dialog.lightbox::backdrop {
   background: rgb(8 8 8 / 0.94);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  dialog.lightbox[open] .lightbox-frame {
-    animation: lightbox-in 360ms var(--ease-out-expo) both;
-  }
-
-  dialog.lightbox[open]::backdrop {
-    animation: fade 240ms ease-out both;
-  }
-
-  .page-swap {
-    animation: fade 260ms ease-out both;
-  }
-}
-
-/* Inputs numéricos da calculadora. */
-.field {
-  width: 100%;
-  min-height: 3rem;
-  padding: 0.625rem 0.875rem 0.625rem 2.75rem;
-  background-color: var(--color-ink);
-  border: 1px solid var(--color-line-strong);
-  border-radius: 4px;
-  color: var(--color-fg);
-  font-size: 1.125rem;
-  font-variant-numeric: tabular-nums;
-  transition: border-color 160ms ease-out;
-}
-
-.field:hover {
-  border-color: #555;
-}
-
-.field:focus-visible {
-  outline: 2px solid var(--color-fg);
-  outline-offset: 2px;
-  border-color: var(--color-fg);
 }

@@ -17,37 +17,37 @@ colors:
   paper-fg-2: "#555555"
 typography:
   display:
-    fontFamily: "Space Grotesk, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(2.5rem, 0.95rem + 5.2vw, 5.25rem)"
-    fontWeight: 700
-    lineHeight: 0.94
-    letterSpacing: "-0.03em"
-  section:
-    fontFamily: "Space Grotesk, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(2rem, 1.2rem + 2.6vw, 3.5rem)"
-    fontWeight: 700
+    fontFamily: "Montserrat, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(2.5rem, 1rem + 4.6vw, 4.75rem)"
+    fontWeight: 800
     lineHeight: 1.02
     letterSpacing: "-0.03em"
+  section:
+    fontFamily: "Montserrat, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(2rem, 1.15rem + 2.9vw, 3.75rem)"
+    fontWeight: 800
+    lineHeight: 1.06
+    letterSpacing: "-0.03em"
   title:
-    fontFamily: "Space Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontFamily: "Montserrat, ui-sans-serif, system-ui, sans-serif"
     fontSize: "1.5rem"
     fontWeight: 700
     lineHeight: 1.25
     letterSpacing: "-0.02em"
   body:
-    fontFamily: "Space Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontFamily: "Montserrat, ui-sans-serif, system-ui, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.625
     letterSpacing: "0em"
   running-head:
-    fontFamily: "Space Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontFamily: "Montserrat, ui-sans-serif, system-ui, sans-serif"
     fontSize: "0.75rem"
     fontWeight: 600
     lineHeight: 1.33
     letterSpacing: "0.14em"
   folio:
-    fontFamily: "Space Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontFamily: "Montserrat, ui-sans-serif, system-ui, sans-serif"
     fontSize: "0.875rem"
     fontWeight: 400
     lineHeight: 1.43
@@ -55,7 +55,8 @@ typography:
 rounded:
   xs: "2px"
   sm: "3px"
-  md: "4px"
+  md: "8px"
+  lg: "16px"
   full: "9999px"
 spacing:
   gutter-mobile: "16px"
@@ -99,13 +100,13 @@ components:
 
 **Creative North Star: "O guia aberto"**
 
-A página se comporta como o próprio PDF: capa preta por fora, miolo claro por dentro. A gramática vem do arquivo, com cabeçalho corrido em caixa alta sobre uma linha fina, referências de página ("Módulo 06 · p. 15"), sumário com pontilhado até o número da página e tabelas de duas ou três colunas separadas só por linhas horizontais. O arco cinza largo da capa reaparece cortado pela borda das seções escuras.
+A página apresenta o guia como produto digital: o PDF aparece num tablet desenhado em CSS sobre um círculo cinza, e a seção clara mostra o miolo. A gramática vem do arquivo, com cabeçalho corrido em caixa alta sobre uma linha fina, referências de página ("Módulo 06 · p. 15"), sumário com pontilhado até o número da página e tabelas de duas ou três colunas separadas só por linhas horizontais. O arco cinza largo da capa reaparece cortado pela borda das seções escuras.
 
 O tom é editorial e contido. A energia vem da escala tipográfica (o título em caixa alta chega a 84 px) e do contraste preto e branco, não de cor. Não há gradientes coloridos, neon nem cartões iguais em fileira.
 
 **Key Characteristics:**
 - Monocromia estrita: preto, branco e cinzas neutros, com uma única seção clara (a amostra).
-- Space Grotesk em toda a interface; caixa alta só no display.
+- Montserrat em toda a interface, a mesma família dos criativos de anúncio, para o visitante reconhecer o que clicou.
 - Linhas de 1 px como estrutura; superfícies elevadas só para a calculadora, a oferta e o checklist.
 - Números em algarismos tabulares sempre que comparam valores ou páginas.
 
@@ -130,7 +131,7 @@ O tom é editorial e contido. A energia vem da escala tipográfica (o título em
 ## Typography
 
 ### Hierarchy
-- **Display** (display): o H1 do hero e o título do CTA final, em caixa alta, entrelinha 0,94.
+- **Display** (display): o H1 do hero e o título da prévia, em caixa de frase e peso 800.
 - **Section** (section): títulos de seção em caixa de frase.
 - **Title** (title): títulos de bloco, de grupo e do painel (24–30 px, 700).
 - **Body** (body): texto corrido em 16–20 px, medida até 65 caracteres.
@@ -140,7 +141,7 @@ O tom é editorial e contido. A energia vem da escala tipográfica (o título em
 ### Named Rules
 **The Folio Rule.** Referências de módulo e página ficam ao lado ou abaixo do título, como fólio. Nunca como etiqueta acima de um título.
 
-**The Uppercase Budget Rule.** Caixa alta é para o display e para os cabeçalhos corridos. Títulos de seção e de bloco ficam em caixa de frase.
+**The Uppercase Budget Rule.** Caixa alta só na marca e na etiqueta do hero. Títulos ficam em caixa de frase.
 
 ## Layout
 
@@ -160,12 +161,12 @@ Profundidade quase sempre por linha e tom, não por sombra. Sombras macias e esc
 
 ## Shapes
 
-Cantos quase retos: 4 px em botões, campos e painéis, 3 px na capa e 2 px nas páginas da amostra. Círculos só nos controles de abrir/fechar do accordion e nas setas do lightbox. O arco grande da capa é a única forma orgânica.
+Botões com 8 px de raio, cards de oferta e de CTA final com 16 px, páginas da amostra com cantos quase retos. Círculos só nos controles de abrir/fechar do accordion e nas setas do lightbox. O arco grande da capa é a única forma orgânica.
 
 ## Components
 
 ### Buttons
-- **Primário**: branco com texto preto, 48 px de altura, 4 px de raio. No hover sobe 2 px, fica branco puro e ganha um brilho suave; a seta interna avança 3 px.
+- **Primário**: branco com texto preto, 52 px de altura, 8 px de raio. No hover sobe 2 px, fica branco puro e ganha um brilho suave; a seta interna avança 3 px.
 - **Fantasma**: transparente com borda cinza forte; no hover a borda fica branca e o fundo ganha 6% de branco.
 - Foco visível em todos: contorno branco de 2 px com afastamento de 3 px (preto na seção de papel).
 
@@ -181,15 +182,18 @@ Cantos quase retos: 4 px em botões, campos e painéis, 3 px na capa e 2 px nas 
 ### Sumário (signature)
 - Linha com rótulo do módulo, título, pontilhado e "p. N". O accordion anima a altura por grid, com o sinal de mais virando menos.
 
-### Calculadora (signature)
-- Três campos à esquerda e uma lista de resultados à direita, com o CPA desejado em destaque (48 px). Resultados em `dl`, frase-resumo em região ao vivo e nota de simulação.
+### Tablet (signature)
+- Moldura de tablet em CSS (gradiente cinza, câmera, reflexo do vidro, luz no piso) em volta da capa real. No hero fica inclinado e reage ao ponteiro no desktop; na oferta e nas dúvidas fica de frente.
+
+### Card de oferta
+- Superfície com borda forte e 16 px de raio: nome, preço em 72 px, quatro itens com check, botão de largura total "Comprar por R$ 29,90" e, abaixo, pagamento e prazo de 7 dias.
 
 ## Do's and Don'ts
 
 ### Do:
 - **Do** usar linhas de 1 px para estruturar tabelas, índices e listas.
 - **Do** colocar referências de página como fólio, em algarismos tabulares.
-- **Do** usar a capa real em perspectiva com sombra CSS; nunca redesenhar o texto da capa.
+- **Do** mostrar a capa real dentro do tablet em CSS; nunca redesenhar o texto da capa.
 - **Do** reservar o fundo claro para mostrar páginas do guia.
 - **Do** fazer as divisórias se desenharem da esquerda para a direita quando a seção revela, e desligar tudo com redução de movimento.
 
@@ -197,5 +201,5 @@ Cantos quase retos: 4 px em botões, campos e painéis, 3 px na capa e 2 px nas 
 - **Don't** adicionar cor de destaque, gradiente colorido ou neon.
 - **Don't** colocar etiquetas em caixa alta acima de títulos de seção.
 - **Don't** usar fileiras de cartões iguais com ícone, título e texto.
-- **Don't** dar à capa espessura de livro impresso: o produto é um PDF.
+- **Don't** apresentar o guia como livro impresso: o produto é um PDF.
 - **Don't** usar selos, logotipos ou cores de Meta e Google.

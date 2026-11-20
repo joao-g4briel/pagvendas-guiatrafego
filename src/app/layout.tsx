@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { Analytics } from "@/components/analytics/analytics";
 import { DevPendingNotice } from "@/components/dev-pending-notice";
@@ -8,9 +8,9 @@ import { SalesClosedNotice } from "@/components/sales-closed-notice";
 import { hasTracking, siteConfig } from "@/config/site";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-montserrat",
   display: "swap",
 });
 
@@ -49,7 +49,7 @@ const revealBootstrap = `(function(){try{var d=document.documentElement;if(!('In
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={spaceGrotesk.variable} suppressHydrationWarning>
+    <html lang="pt-BR" className={montserrat.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: revealBootstrap }} />
       </head>

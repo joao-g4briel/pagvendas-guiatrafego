@@ -39,7 +39,7 @@ Guia em PDF que começa pela conta do negócio (margem de contribuição, CPA de
 
 ## Brand Commitments
 
-- Marca Metodaria. Identidade monocromática preta e branca, letra sem serifa pesada em caixa alta, arco cinza amplo na capa. Briefing fixa fundo próximo de #080808, superfícies #141414, texto #F5F5F5 e Space Grotesk.
+- Marca Metodaria. Identidade monocromática preta e branca, letra sem serifa pesada em caixa alta, arco cinza amplo na capa. Fundo próximo de #080808, superfícies #141414, texto #F5F5F5. Desde 20/11/2026, tipografia Montserrat e capa nova com seta prateada, a pedido do responsável (mockups enviados por ele).
 - Arquivos: capa vertical (`Traffic management for small businesses-1.png`), banner com tablet (`Premium Black Tablet Ebook Banner-2.png`), criativo "Plan Before You Boost Ads.png", monograma/favicon em `D:\REA-CAPPEN\metodaria_site_assets\10_favicon_512.png` **[inferido como ativo oficial]**.
 - Sem selos ou vínculo com Meta ou Google.
 

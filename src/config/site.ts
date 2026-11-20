@@ -43,13 +43,13 @@ export const siteConfig = {
   product: {
     name: "Guia de Tráfego Pago",
     subtitle: "Meta Ads e fundamentos de aquisição",
-    coverTitle: "Gestão de Tráfego",
+    coverTitle: "Guia de Tráfego Pago",
     format: "PDF",
     pages: 53,
     modules: 16,
     lessons: 48,
     edition: "Edição 1.0 · novembro de 2026",
-    coverImage: { src: "/capa/guia-gestao-de-trafego.png", width: 1024, height: 1536 },
+    coverImage: { src: "/capa/guia-trafego-pago.png", width: 1024, height: 1536 },
   },
 
   price: {
