@@ -53,7 +53,7 @@ export const siteConfig = {
   },
 
   price: {
-    amount: 29.9,
+    amount: 29,
     currency: "BRL",
     terms: "pagamento único",
   },
@@ -70,6 +70,12 @@ export const siteConfig = {
      * Conferido em 20/11/2026: o checkout oferece cartão de crédito, Pix e cartão + Pix.
      */
     paymentMethods: ["pix", "cartao"] as PaymentMethod[],
+    /**
+     * Taxa de serviço que a Cakto soma no checkout e o comprador paga. Conferida em 20/11/2026:
+     * R$ 29,00 + R$ 0,99 = R$ 29,99. Não há opção para tirá-la no painel do produto.
+     * Enquanto existir, a página mostra a taxa junto ao preço; use `null` se a Cakto deixar de cobrar.
+     */
+    serviceFee: 0.99 as number | null,
     /** Texto de entrega exibido na oferta e no FAQ. Revise conforme a configuração do produto na Cakto. */
     delivery:
       "O pagamento e a entrega acontecem na Cakto. Depois da confirmação do pagamento, a plataforma libera o acesso ao PDF conforme a configuração do produto, normalmente pelo e-mail informado na compra.",
@@ -120,8 +126,16 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
   currency: siteConfig.price.currency,
 });
 
-/** "R$ 29,90" (com espaço inseparável). */
+/** "R$ 29,00" (com espaço inseparável). */
 export const formattedPrice = priceFormatter.format(siteConfig.price.amount);
+
+const fee = siteConfig.checkout.serviceFee;
+
+/** "+ R$ 0,99 de taxa de serviço da Cakto", ou null quando não há taxa. */
+export const feeNote = fee ? `+ ${priceFormatter.format(fee)} de taxa de serviço da ${siteConfig.checkout.provider}` : null;
+
+/** Versão curta para a barra do celular: "+ R$ 0,99 de taxa". */
+export const feeShortNote = fee ? `+ ${priceFormatter.format(fee)} de taxa` : null;
 
 export const hasTracking = Boolean(siteConfig.analytics.ga4Id || siteConfig.analytics.metaPixelId);
 

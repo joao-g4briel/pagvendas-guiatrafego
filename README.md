@@ -94,7 +94,8 @@ Os scripts usam o Edge instalado (`channel="msedge"`); troque para `chrome` se p
 ## Pendências antes de abrir as vendas
 
 - [x] Meios de pagamento conferidos no checkout em 20/11/2026 (cartão, Pix e cartão + Pix) e preenchidos em `checkout.paymentMethods`.
-- [ ] Alinhar o checkout da Cakto com a página. Em 20/11/2026 ele mostrava outro nome ("Anuncie com Método — Guia Prático de Tráfego Pago"), uma taxa de serviço de R$ 0,99 (total de R$ 30,89, contra R$ 29,90 na página) e um cronômetro de "oferta por tempo limitado".
+- [x] Checkout da Cakto alinhado em 20/11/2026: produto e oferta renomeados para "Guia de Tráfego Pago — Metodaria" e cronômetro de "oferta por tempo limitado" removido (desktop e celular).
+- [ ] Taxa de serviço de R$ 0,99 que a Cakto soma no checkout (total de R$ 29,99 com o preço de R$ 29,00, adotado em 20/11/2026). A página mostra a taxa junto ao preço (`checkout.serviceFee`). Se a Cakto permitir tirá-la, mude o campo para `null`.
 - [ ] Revisar o texto de entrega (`checkout.delivery`) conforme a configuração do produto na Cakto.
 - [ ] Preencher a identificação do vendedor: nome ou razão social, CPF/CNPJ e endereço (exigidos pelo Decreto 7.962/2013).
 - [ ] Definir o canal de suporte (e-mail e/ou WhatsApp).

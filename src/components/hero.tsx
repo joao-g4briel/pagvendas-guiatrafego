@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import { ArrowIcon, CheckoutCta } from "@/components/checkout-cta";
 import { TabletMockup } from "@/components/tablet-mockup";
-import { formattedPrice, paymentMethodShortLabels, siteConfig } from "@/config/site";
+import { feeNote, formattedPrice, paymentMethodShortLabels, siteConfig } from "@/config/site";
 
 const delay = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 
@@ -51,6 +51,7 @@ export function Hero() {
                 <span className="tabular font-extrabold">{formattedPrice}</span>
                 <span className="text-fg-2">· {price.terms}</span>
               </p>
+              {feeNote ? <p className="mt-1 text-sm text-fg-2">{feeNote}</p> : null}
               <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-7">
                 <CheckoutCta location="hero" className="sm:min-w-[17rem]">
                   Quero acessar o guia

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, LazyMotion, domAnimation, m } from "motion/react";
 import { CheckoutCta } from "@/components/checkout-cta";
-import { formattedPrice, siteConfig } from "@/config/site";
+import { feeShortNote, formattedPrice, siteConfig } from "@/config/site";
 
 /** Seções que, visíveis, tornam a barra desnecessária (já têm compra ou são o fim da página). */
 const HIDE_WHEN_VISIBLE = ["oferta", "compra-final"];
@@ -71,6 +71,7 @@ export function MobileBuyBar() {
               <p className="min-w-0 leading-tight">
                 <span className="block truncate text-sm text-fg-2">{siteConfig.product.name}</span>
                 <span className="tabular text-lg font-bold">{formattedPrice}</span>
+                {feeShortNote ? <span className="block text-xs text-fg-2">{feeShortNote}</span> : null}
               </p>
               <CheckoutCta location="mobile_bar" size="compact" className="shrink-0">
                 Comprar guia

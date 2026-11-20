@@ -18,7 +18,7 @@ Pequenos empreendedores, profissionais autônomos e iniciantes (incluindo estuda
 
 ## Product Purpose
 
-Vender o Guia de Tráfego Pago da Metodaria, um PDF introdutório. A página explica o valor do material, deixa avaliar uma amostra real e leva ao checkout externo da Cakto. Sucesso: o visitante entende o que recebe por R$ 29,90 e compra sem promessas falsas.
+Vender o Guia de Tráfego Pago da Metodaria, um PDF introdutório. A página explica o valor do material, deixa avaliar uma amostra real e leva ao checkout externo da Cakto. Sucesso: o visitante entende o que recebe por R$ 29,00 (mais R$ 0,99 de taxa da Cakto) e compra sem promessas falsas.
 
 ## Positioning
 

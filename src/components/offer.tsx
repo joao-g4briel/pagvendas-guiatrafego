@@ -1,7 +1,7 @@
 import { Check } from "lucide-react";
 import { CheckoutCta } from "@/components/checkout-cta";
 import { TabletMockup } from "@/components/tablet-mockup";
-import { formattedPrice, paymentMethodLabels, siteConfig } from "@/config/site";
+import { feeNote, formattedPrice, paymentMethodLabels, siteConfig } from "@/config/site";
 import { offerItems } from "@/content/guia";
 
 function listFormat(items: string[]): string {
@@ -52,6 +52,7 @@ export function Offer() {
               </span>
               <span className="text-lg text-fg-2">{price.terms}</span>
             </p>
+            {feeNote ? <p className="mt-2 text-[0.9375rem] text-fg-2">{feeNote}, cobrada no checkout.</p> : null}
 
             <ul className="mt-8 grid gap-3.5 sm:grid-cols-2 sm:gap-x-8">
               {offerItems.map((item) => (
