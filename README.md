@@ -1,6 +1,6 @@
 # Guia de Tráfego Pago — página de vendas
 
-Página de vendas do guia em PDF da Metodaria. Next.js 16 (App Router), TypeScript, Tailwind CSS 4 e Motion for React. Todas as rotas são estáticas; pagamento e entrega ficam na Cakto.
+Página de vendas do guia da Metodaria (PDF + 3 videoaulas). Next.js 16 (App Router), TypeScript, Tailwind CSS 4 e Motion for React. Todas as rotas são estáticas; pagamento e entrega ficam na Cakto.
 
 ## Rodar
 
@@ -33,7 +33,7 @@ Requer Node 20.9 ou mais recente.
 | Dúvidas frequentes | `src/components/faq.tsx` |
 | Termos e privacidade | `src/app/termos/page.tsx`, `src/app/privacidade/page.tsx` |
 
-O preço aparece em todos os lugares a partir de `siteConfig.price.amount`. Ele é o total que o comprador paga: na Cakto, o produto custa R$ 28,01 e a taxa de serviço de R$ 0,99 completa os R$ 29,00. Ao mudar o preço na Cakto, mantenha os dois iguais.
+O preço aparece em todos os lugares a partir de `siteConfig.price.amount`. Ele é o total que o comprador paga: na Cakto, o produto custa R$ 12,91 e a taxa de serviço de R$ 0,99 completa os R$ 13,90. Ao mudar o preço na Cakto, mantenha os dois iguais.
 
 ### Vídeo de entrada
 
@@ -43,7 +43,7 @@ Só na página de vendas (não em termos e privacidade). Na primeira visita, a a
 
 Todos os botões de compra (cabeçalho, menu, hero, prévia, oferta, CTA final e barra do celular) usam `siteConfig.checkout.url`. Para trocar o link, mude **uma** destas opções:
 
-- `DEFAULT_CHECKOUT_URL` em `src/config/site.ts` (hoje `https://pay.cakto.com.br/tsduujj_1343853`); ou
+- `DEFAULT_CHECKOUT_URL` em `src/config/site.ts` (hoje `https://pay.cakto.com.br/3953vai`, a oferta de R$ 13,90); ou
 - a variável `NEXT_PUBLIC_CHECKOUT_URL` na Vercel.
 
 Se a URL ficar inválida (precisa ser `https://`), a página continua no ar e os botões avisam que as vendas ainda não estão abertas. `NEXT_PUBLIC_CHECKOUT_FORWARD_UTM=true` repassa os `utm_*` da página ao checkout; ative só depois de confirmar que a Cakto aceita esses parâmetros.
@@ -102,7 +102,7 @@ Os scripts usam o Edge instalado (`channel="msedge"`); troque para `chrome` se p
 
 - [x] Meios de pagamento conferidos no checkout em 20/11/2026 (cartão, Pix e cartão + Pix) e preenchidos em `checkout.paymentMethods`.
 - [x] Checkout da Cakto alinhado em 20/11/2026: produto e oferta renomeados para "Guia de Tráfego Pago — Metodaria" e cronômetro de "oferta por tempo limitado" removido (desktop e celular).
-- [x] Taxa de serviço da Cakto embutida no preço desde 21/11/2026: produto a R$ 28,01 + R$ 0,99 = R$ 29,00 no checkout, o mesmo valor da página.
+- [x] Taxa de serviço da Cakto embutida no preço: desde 22/11/2026, produto a R$ 12,91 + R$ 0,99 = R$ 13,90 no checkout `3953vai`, o mesmo valor da página.
 - [ ] Revisar o texto de entrega (`checkout.delivery`) conforme a configuração do produto na Cakto.
 - [ ] Preencher a identificação do vendedor: nome ou razão social, CPF/CNPJ e endereço (exigidos pelo Decreto 7.962/2013).
 - [ ] Definir o canal de suporte (e-mail e/ou WhatsApp).

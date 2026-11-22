@@ -26,9 +26,10 @@ export default function TermosPage() {
       <h2>2. O produto</h2>
       <p>
         {product.name}: {product.subtitle}. Guia em {product.format} com {product.pages} páginas,{" "}
-        {product.modules} módulos e {product.lessons} lições, {product.edition.toLowerCase()}. É um material
-        educacional independente. Não inclui videoaulas, atendimento individual, certificação oficial nem
-        acompanhamento de campanhas, e não tem vínculo com Meta, Google ou outras plataformas citadas.
+        {product.modules} módulos e {product.lessons} lições, {product.edition.toLowerCase()}, acompanhado de{" "}
+        {product.videoLessons} videoaulas. É um material educacional independente. Não inclui atendimento
+        individual, certificação oficial nem acompanhamento de campanhas, e não tem vínculo com Meta, Google ou
+        outras plataformas citadas.
       </p>
 
       <h2>3. Preço e pagamento</h2>

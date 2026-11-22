@@ -20,7 +20,7 @@ import sys
 
 from playwright.sync_api import Page, expect, sync_playwright
 
-CHECKOUT = "https://pay.cakto.com.br/tsduujj_1343853"
+CHECKOUT = "https://pay.cakto.com.br/3953vai"
 CHAVE_AULA = "mtd_aula_liberada"
 resultados: list[tuple[bool, str]] = []
 
@@ -283,7 +283,7 @@ def entrada(p, url: str) -> None:
 
     # Sem temporizador: tudo ativo assim que a página abre
     rotulo = compra.inner_text().strip() if compra.count() else ""
-    check(compra.count() == 1 and compra.get_attribute("href") == CHECKOUT and "Quero o guia por R$" in rotulo and "29,00" in rotulo,
+    check(compra.count() == 1 and compra.get_attribute("href") == CHECKOUT and "Quero o guia por R$" in rotulo and "13,90" in rotulo,
           f"botão de compra já ativo ao entrar: “{rotulo}” com o link da Cakto")
     check("btn-primary" in (compra.get_attribute("class") or ""), "botão de compra com o estilo do botão principal")
     check(ver_pagina.is_enabled() and fechar_x.is_visible(), "“Ver a página completa” e X ativos ao entrar")

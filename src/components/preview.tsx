@@ -1,5 +1,6 @@
 import { ArrowIcon, CheckoutCta } from "@/components/checkout-cta";
 import { PreviewGallery } from "@/components/preview-gallery";
+import { productContents } from "@/config/site";
 import { includedHighlights, previewPages } from "@/content/guia";
 
 export function Preview() {
@@ -14,7 +15,7 @@ export function Preview() {
             <p className="mt-6 max-w-md text-lg leading-relaxed text-paper-fg-2 sm:text-xl">
               Conheça uma amostra do conteúdo antes de comprar.
             </p>
-            <p className="mt-5 text-lg font-bold">Guia introdutório em PDF.</p>
+            <p className="mt-5 text-lg font-bold">Guia introdutório em {productContents}.</p>
             <CheckoutCta location="preview" variant="dark" className="mt-8 w-full sm:w-auto">
               Quero acessar o guia
               <ArrowIcon />

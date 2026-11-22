@@ -14,9 +14,9 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-const title = "Guia de Tráfego Pago em PDF | Metodaria";
+const title = "Guia de Tráfego Pago: PDF + 3 videoaulas | Metodaria";
 const description =
-  "Antes de impulsionar, tenha um plano. Guia em PDF para planejar anúncios, organizar o orçamento e acompanhar resultados: 53 páginas, 16 módulos, exercícios e checklists para pequenos negócios.";
+  "Antes de impulsionar, tenha um plano. Guia em PDF com 3 videoaulas para planejar anúncios, organizar o orçamento e acompanhar resultados: 53 páginas, 16 módulos, exercícios e checklists para pequenos negócios.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),

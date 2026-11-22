@@ -18,17 +18,17 @@ Pequenos empreendedores, profissionais autônomos e iniciantes (incluindo estuda
 
 ## Product Purpose
 
-Vender o Guia de Tráfego Pago da Metodaria, um PDF introdutório. A página explica o valor do material, deixa avaliar uma amostra real e leva ao checkout externo da Cakto. Sucesso: o visitante entende o que recebe por R$ 29,00 (taxa da Cakto já inclusa) e compra sem promessas falsas.
+Vender o Guia de Tráfego Pago da Metodaria, um PDF introdutório com 3 videoaulas. A página explica o valor do material, deixa avaliar uma amostra real e leva ao checkout externo da Cakto. Sucesso: o visitante entende o que recebe por R$ 13,90 (taxa da Cakto já inclusa) e compra sem promessas falsas.
 
 ## Positioning
 
-Guia em PDF que começa pela conta do negócio (margem de contribuição, CPA desejado, limite de perda do teste) antes de abrir o Gerenciador de Anúncios, com exercícios resolvidos sobre dados simulados, checklists e modelos para preencher. Foco em Meta Ads com introdução ao Google Ads de Pesquisa.
+Guia em PDF, com 3 videoaulas, que começa pela conta do negócio (margem de contribuição, CPA desejado, limite de perda do teste) antes de abrir o Gerenciador de Anúncios, com exercícios resolvidos sobre dados simulados, checklists e modelos para preencher. Foco em Meta Ads com introdução ao Google Ads de Pesquisa.
 
 ## Operating Context
 
 - Produto: PDF de 53 páginas, 16 módulos, 48 lições curtas, roteiro sugerido de oito semanas, anexos A a J (modelos, fórmulas, laboratório com dados simulados, checklist antes de publicar, roteiros, relatório e proposta, decisões por cenário, avaliação com gabarito, glossário, 34 fontes oficiais).
 - Edição Metodaria 1.0, novembro de 2026; pesquisa e redação assistidas por IA, com revisão editorial e conferência documental (declarado no PDF).
-- Pagamento e entrega ficam na Cakto: `https://pay.cakto.com.br/tsduujj_1343853`.
+- Pagamento e entrega ficam na Cakto: `https://pay.cakto.com.br/3953vai`.
 
 ## Capabilities and Constraints
 

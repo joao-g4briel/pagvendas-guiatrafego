@@ -1,19 +1,21 @@
 import type { CSSProperties } from "react";
 import { ArrowIcon, CheckoutCta } from "@/components/checkout-cta";
 import { TabletMockup } from "@/components/tablet-mockup";
-import { formattedPrice, paymentMethodsShort, siteConfig } from "@/config/site";
+import { formattedPrice, paymentMethodsShort, productContents, siteConfig } from "@/config/site";
 
 const delay = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 
 export function Hero() {
   const { product, price, refund } = siteConfig;
-  const reassurance = [paymentMethodsShort || null, `${refund.legalDays} dias de garantia`]
+  const terms = price.terms.charAt(0).toUpperCase() + price.terms.slice(1);
+  const reassurance = [terms, paymentMethodsShort || null, `${refund.legalDays} dias de garantia`]
     .filter(Boolean)
     .join(" · ");
   const stats = [
     { value: product.pages, label: "páginas" },
     { value: product.modules, label: "módulos" },
     { value: product.lessons, label: "lições curtas" },
+    { value: product.videoLessons, label: "videoaulas" },
   ];
 
   return (
@@ -43,7 +45,7 @@ export function Hero() {
             <div id="hero-compra" className="hero-in mt-8" style={delay(340)}>
               <p className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1 text-xl sm:text-2xl">
                 <span className="tabular font-extrabold">{formattedPrice}</span>
-                <span className="text-fg-2">· {price.terms}</span>
+                <span className="font-bold">· {productContents}</span>
               </p>
               <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-7">
                 <CheckoutCta location="hero" className="sm:min-w-[17rem]">
@@ -78,18 +80,18 @@ export function Hero() {
           </div>
         </div>
 
-        <ul className="hero-in relative grid grid-cols-3 border-y border-line-strong py-5 sm:py-7" style={delay(420)}>
+        <ul className="hero-in relative grid grid-cols-4 border-y border-line-strong py-5 sm:py-7" style={delay(420)}>
           {stats.map((stat, index) => (
             <li
               key={stat.label}
-              className={`flex flex-col items-center gap-1 text-center sm:flex-row sm:justify-center sm:gap-4 ${
+              className={`flex flex-col items-center gap-1 px-1 text-center lg:flex-row lg:justify-center lg:gap-4 ${
                 index > 0 ? "border-l border-line-strong" : ""
               }`}
             >
               <span className="tabular text-[2rem] font-extrabold leading-none tracking-[-0.03em] sm:text-5xl lg:text-6xl">
                 {stat.value}
               </span>
-              <span className="text-sm text-fg-2 sm:text-lg">{stat.label}</span>
+              <span className="text-[0.8125rem] text-fg-2 sm:text-lg">{stat.label}</span>
             </li>
           ))}
         </ul>

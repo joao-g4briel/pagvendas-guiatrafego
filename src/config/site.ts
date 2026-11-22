@@ -9,8 +9,8 @@
 
 export type PaymentMethod = "pix" | "cartao" | "boleto";
 
-/** Checkout da Cakto fornecido no briefing. Para trocar, edite aqui ou use NEXT_PUBLIC_CHECKOUT_URL. */
-const DEFAULT_CHECKOUT_URL = "https://pay.cakto.com.br/tsduujj_1343853";
+/** Checkout da Cakto (oferta de R$ 13,90, desde 22/11/2026). Para trocar, edite aqui ou use NEXT_PUBLIC_CHECKOUT_URL. */
+const DEFAULT_CHECKOUT_URL = "https://pay.cakto.com.br/3953vai";
 
 function clean(value: string | undefined): string | undefined {
   const trimmed = value?.trim();
@@ -48,16 +48,18 @@ export const siteConfig = {
     pages: 53,
     modules: 16,
     lessons: 48,
+    /** Videoaulas que acompanham o PDF. */
+    videoLessons: 3,
     edition: "Edição 1.0 · novembro de 2026",
     coverImage: { src: "/capa/guia-trafego-pago.png", width: 1024, height: 1536 },
   },
 
   price: {
     /**
-     * Total que o comprador paga. Conferido no checkout em 21/11/2026: produto a R$ 28,01
-     * + R$ 0,99 de taxa de serviço da Cakto = R$ 29,00. Se mudar o preço na Cakto, mantenha os dois iguais.
+     * Total que o comprador paga. Conferido no checkout em 22/11/2026: produto a R$ 12,91
+     * + R$ 0,99 de taxa de serviço da Cakto = R$ 13,90. Se mudar o preço na Cakto, mantenha os dois iguais.
      */
-    amount: 29,
+    amount: 13.9,
     currency: "BRL",
     terms: "pagamento único",
   },
@@ -76,7 +78,7 @@ export const siteConfig = {
     paymentMethods: ["pix", "cartao"] as PaymentMethod[],
     /** Texto de entrega exibido na oferta e no FAQ. Revise conforme a configuração do produto na Cakto. */
     delivery:
-      "O pagamento e a entrega acontecem na Cakto. Depois da confirmação do pagamento, a plataforma libera o acesso ao PDF conforme a configuração do produto, normalmente pelo e-mail informado na compra.",
+      "O pagamento e a entrega acontecem na Cakto. Depois da confirmação do pagamento, a plataforma libera o acesso ao PDF e às videoaulas conforme a configuração do produto, normalmente pelo e-mail informado na compra.",
   },
 
   /** Vídeo de entrada da página de vendas (src/components/video-gate.tsx). Os tempos ficam no componente. */
@@ -133,8 +135,11 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
   currency: siteConfig.price.currency,
 });
 
-/** "R$ 29,00" (com espaço inseparável). */
+/** "R$ 13,90" (com espaço inseparável). */
 export const formattedPrice = priceFormatter.format(siteConfig.price.amount);
+
+/** "PDF + 3 videoaulas": o que a compra entrega ("3 videoaulas" não quebra de linha). */
+export const productContents = `${siteConfig.product.format} + ${siteConfig.product.videoLessons} videoaulas`;
 
 export const hasTracking = Boolean(siteConfig.analytics.ga4Id || siteConfig.analytics.metaPixelId);
 

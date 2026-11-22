@@ -186,7 +186,7 @@ Botões com 8 px de raio, cards de oferta e de CTA final com 16 px, páginas da 
 - Moldura de tablet em CSS (gradiente cinza, câmera, reflexo do vidro, luz no piso) em volta da capa real. No hero fica inclinado e reage ao ponteiro no desktop; na oferta e nas dúvidas fica de frente.
 
 ### Card de oferta
-- Superfície com borda forte e 16 px de raio: nome, preço em 72 px, quatro itens com check, botão de largura total "Comprar por R$ 29,00" e, abaixo, pagamento e prazo de 7 dias.
+- Superfície com borda forte e 16 px de raio: nome, preço em 72 px, quatro itens com check, botão de largura total "Comprar por R$ 13,90" e, abaixo, pagamento e prazo de 7 dias.
 
 ### Vídeo de entrada
 - Camada em tela cheia sobre a página (#080808 a 96% com desfoque), título em 800, vídeo 16:9 com 14 px de raio e borda #2a2a2a, largura limitada pela altura da tela para caber num notebook de 768 px. Botão de som em pílula branca sobre o vídeo (pulsa, exceto com redução de movimento), X no canto e, abaixo, os botões do site (primário branco para comprar e fantasma para ver a página), ativos desde o início. No celular, os botões empilham em largura total.

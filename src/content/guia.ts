@@ -162,6 +162,7 @@ export const includedHighlights = [
 /** Itens do card de oferta. */
 export const offerItems = [
   "Guia completo em PDF",
+  "3 videoaulas",
   "53 páginas e 16 módulos",
   "48 lições curtas",
   "Exercícios, checklists e modelos",

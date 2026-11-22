@@ -41,8 +41,8 @@ export function Faq() {
 
   const items: { question: string; answer: ReactNode }[] = [
     {
-      question: "É um curso com videoaulas?",
-      answer: "Não. É um guia introdutório em PDF, para estudar no seu ritmo, sem videoaulas nem certificado oficial.",
+      question: "Tem videoaulas?",
+      answer: `Sim. Além do guia introdutório em ${product.format}, a compra inclui ${product.videoLessons} videoaulas, para estudar no seu ritmo. Não há certificado oficial.`,
     },
     {
       question: "Preciso ter experiência?",
@@ -53,7 +53,8 @@ export function Faq() {
       question: "Como recebo o material?",
       answer: (
         <>
-          {checkout.delivery} É um PDF de {product.pages} páginas para ler no celular ou no computador.
+          {checkout.delivery} São o PDF de {product.pages} páginas e as {product.videoLessons} videoaulas, para ver no
+          celular ou no computador.
         </>
       ),
     },

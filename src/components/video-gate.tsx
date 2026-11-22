@@ -3,13 +3,13 @@
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore, type KeyboardEvent } from "react";
 import { Play, Volume2, X } from "lucide-react";
 import { ArrowIcon, CheckoutCta } from "@/components/checkout-cta";
-import { formattedPrice, paymentMethodsShort, siteConfig } from "@/config/site";
+import { formattedPrice, paymentMethodsShort, productContents, siteConfig } from "@/config/site";
 import { trackVideoGate } from "@/lib/analytics";
 
 const { src, poster, storageKey } = siteConfig.introVideo;
 
 const NOTE = [
-  `Aula grátis de amostra. O guia completo é em ${siteConfig.product.format}`,
+  `Aula grátis de amostra. O guia completo é ${productContents}`,
   paymentMethodsShort || null,
   `${siteConfig.refund.legalDays} dias de garantia.`,
 ]
