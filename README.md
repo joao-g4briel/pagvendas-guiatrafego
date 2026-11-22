@@ -26,7 +26,7 @@ Requer Node 20.9 ou mais recente.
 |---|---|
 | Preço, nome do produto, checkout, meios de pagamento, texto de entrega | `src/config/site.ts` |
 | Vídeo de entrada: arquivo, capa e chave do localStorage | `siteConfig.introVideo` em `src/config/site.ts` |
-| Vídeo de entrada: tempos para liberar compra (`COMPRA`) e página (`SAIDA`) | `src/components/video-gate.tsx` |
+| Vídeo de entrada: título, botões e comportamento | `src/components/video-gate.tsx` |
 | Suporte, vendedor (nome, CPF/CNPJ, endereço), reembolso, datas e retenção das páginas legais | `src/config/site.ts` |
 | Valores por ambiente (URL do site, checkout, IDs de medição, contato) | variáveis em `.env.example` |
 | Textos da página (situações, módulos, sumário, amostra, públicos, oferta) | `src/content/guia.ts` |
@@ -37,7 +37,7 @@ O preço aparece em todos os lugares a partir de `siteConfig.price.amount`. Ele 
 
 ### Vídeo de entrada
 
-Só na página de vendas (não em termos e privacidade). Na primeira visita, a aula abre por cima da página, muda, e conta só o tempo realmente assistido (pulos e pausas não contam): aos 30 s aparece o botão de compra; aos 60 s, ou no fim do vídeo, a página é liberada e isso fica salvo no localStorage (`mtd_aula_liberada`). Quem volta não é bloqueado: vê só o botão "Ver a aula grátis". Para ver o bloqueio de novo, apague essa chave no navegador. O vídeo fica em `public/videos/`; para usar uma capa, coloque a imagem lá e preencha `introVideo.poster`.
+Só na página de vendas (não em termos e privacidade). Na primeira visita, a aula abre por cima da página e começa muda ("Toque para ativar o som" liga o som e recomeça). O botão de compra, "Ver a página completa", o X e o Esc funcionam desde o início, sem temporizador. Ao fechar, a visita fica salva no localStorage (`mtd_aula_liberada`) e quem volta vê só o botão "Ver a aula grátis". Para ver o vídeo abrir sozinho de novo, apague essa chave no navegador. O vídeo fica em `public/videos/`; para usar uma capa, coloque a imagem lá e preencha `introVideo.poster`.
 
 ### Trocar o checkout
 
@@ -69,7 +69,7 @@ Sem IDs, nenhum rastreador é carregado e não aparece aviso de cookies. Com `NE
 - eventos desta página, sem dados pessoais:
   - GA4: `page_view`, `view_item` e `checkout_click` (parâmetro `cta_location`);
   - Meta: `PageView`, `ViewContent` e o personalizado `CheckoutClick`;
-  - Meta, no vídeo de entrada: `AulaSomAtivado`, `AulaCompraLiberada`, `AulaCliqueCompra` e `AulaPaginaLiberada` (personalizados).
+  - Meta, no vídeo de entrada: `AulaSomAtivado` e `AulaCliqueCompra` (personalizados).
 
 `checkout_click` e `CheckoutClick` medem **intenção**. Não marque esses eventos como conversão principal para lances.
 

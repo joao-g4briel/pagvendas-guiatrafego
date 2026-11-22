@@ -107,10 +107,10 @@ function countClickOnVercel(location: CtaLocation): void {
   }
 }
 
-export type VideoGateEvent = "AulaSomAtivado" | "AulaCompraLiberada" | "AulaCliqueCompra" | "AulaPaginaLiberada";
+export type VideoGateEvent = "AulaSomAtivado" | "AulaCliqueCompra";
 
 /**
- * Etapas do vídeo de entrada como eventos personalizados do Meta. O fbq só existe depois
+ * Ações no vídeo de entrada como eventos personalizados do Meta. O fbq só existe depois
  * do consentimento (e com NEXT_PUBLIC_META_PIXEL_ID), então sem ele nada é enviado.
  */
 export function trackVideoGate(event: VideoGateEvent): void {

@@ -84,7 +84,7 @@ export const siteConfig = {
     src: "/videos/aula-primeira-campanha_COM-VOZ.mp4",
     /** Imagem mostrada até o primeiro quadro. Ainda não há capa em public/videos. */
     poster: null as string | null,
-    /** Chave do localStorage de quem já liberou a página. Também lida pelo script do <head> em layout.tsx. */
+    /** Chave do localStorage de quem já fechou o vídeo. Também lida pelo script do <head> em layout.tsx. */
     storageKey: "mtd_aula_liberada",
   },
 
