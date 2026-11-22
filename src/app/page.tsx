@@ -8,6 +8,7 @@ import { Preview } from "@/components/preview";
 import { Problems } from "@/components/problems";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { VideoGate } from "@/components/video-gate";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       </main>
       <SiteFooter />
       <MobileBuyBar />
+      <VideoGate />
     </>
   );
 }

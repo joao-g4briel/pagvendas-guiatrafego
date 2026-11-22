@@ -242,6 +242,16 @@
     box-shadow: none;
   }
 
+  /* Ex.: "Ver a página em 0:42" no vídeo de entrada, antes de liberar. */
+  .btn:disabled {
+    cursor: default;
+    color: var(--color-fg-3);
+    border-color: var(--color-line-strong);
+    background-color: transparent;
+    transform: none;
+    box-shadow: none;
+  }
+
   .btn .btn-arrow {
     transition: transform 220ms var(--ease-out-expo);
   }
@@ -413,4 +423,89 @@ dialog.lightbox {
 
 dialog.lightbox::backdrop {
   background: rgb(8 8 8 / 0.94);
+}
+
+/* Vídeo de entrada (components/video-gate.tsx). Não é <dialog> nativo de propósito: no Android,
+   o voltar do sistema fecharia o modal, e o bloqueio não deve mexer no botão voltar. */
+.aula-gate {
+  position: fixed;
+  inset: 0;
+  /* acima do cabeçalho e da barra de compra (50); abaixo do aviso de cookies (60) e do de vendas fechadas (70) */
+  z-index: 55;
+  display: flex;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: max(1rem, env(safe-area-inset-top)) 1rem max(1.5rem, env(safe-area-inset-bottom));
+  background-color: rgb(8 8 8 / 0.96);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: var(--color-fg);
+}
+
+.aula-gate:focus {
+  outline: none;
+}
+
+/* Sem JavaScript o vídeo não toca nem libera, então a página fica aberta.
+   Quem já liberou (marcado pelo script do <head>) não vê o bloqueio piscar antes da hidratação. */
+html:not([data-js]) .aula-gate,
+html[data-aula-liberada] .aula-gate[data-boot] {
+  display: none;
+}
+
+/* Largura limitada pela altura da tela: título, vídeo, barra e botões cabem num notebook de 768 px. */
+.aula-box {
+  position: relative;
+  margin: auto;
+  width: min(61.25rem, 100%, calc((100vh - 17.5rem) * 16 / 9));
+  width: min(61.25rem, 100%, calc((100dvh - 17.5rem) * 16 / 9));
+  min-width: min(100%, 20rem);
+}
+
+.aula-reopen {
+  bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+/* No celular, o botão "Ver a aula grátis" sobe enquanto a barra de compra ocupa o rodapé. */
+@media (width < 64rem) {
+  html[data-buy-bar] .aula-reopen {
+    bottom: calc(4.375rem + max(0.75rem, env(safe-area-inset-bottom)));
+  }
+}
+
+@keyframes aula-pulse {
+  50% {
+    box-shadow:
+      0 0 0 10px rgb(245 245 245 / 0.12),
+      0 8px 30px rgb(0 0 0 / 0.45);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .aula-box {
+    animation: rise 500ms var(--ease-out-expo) both;
+  }
+
+  .aula-som {
+    animation: aula-pulse 1.8s ease-in-out infinite;
+  }
+
+  /* `backwards`, não `both`: depois da entrada, o hover do botão de compra volta a funcionar. */
+  .aula-rise {
+    animation: rise 450ms var(--ease-out-expo) backwards;
+  }
+
+  .aula-fade {
+    animation: fade 400ms ease-out backwards;
+  }
+
+  .aula-fill {
+    transition: width 250ms linear;
+  }
+
+  .aula-reopen {
+    transition:
+      bottom 420ms var(--ease-out-expo),
+      border-color 180ms ease-out;
+  }
 }

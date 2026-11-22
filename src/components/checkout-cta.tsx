@@ -12,6 +12,8 @@ type CheckoutCtaProps = {
   variant?: "primary" | "ghost" | "dark";
   size?: "default" | "compact";
   className?: string;
+  /** Medição extra do local do botão (a contagem padrão do clique já acontece aqui). */
+  onClick?: () => void;
 };
 
 const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "utm_id"];
@@ -37,6 +39,7 @@ export function CheckoutCta({
   variant = "primary",
   size = "default",
   className = "",
+  onClick,
 }: CheckoutCtaProps) {
   const url = siteConfig.checkout.url;
   const classes = `btn btn-${variant} ${
@@ -62,6 +65,7 @@ export function CheckoutCta({
       data-checkout-cta={location}
       onClick={(event) => {
         trackCheckoutClick(location);
+        onClick?.();
         if (siteConfig.checkout.forwardUtm) event.currentTarget.href = withPageUtm(url);
       }}
     >

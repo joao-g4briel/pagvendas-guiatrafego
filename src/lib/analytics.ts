@@ -11,7 +11,7 @@
 import { pageview } from "@vercel/analytics";
 import { siteConfig } from "@/config/site";
 
-export type CtaLocation = "header" | "menu" | "hero" | "preview" | "offer" | "final" | "mobile_bar";
+export type CtaLocation = "header" | "menu" | "hero" | "preview" | "offer" | "final" | "mobile_bar" | "aula";
 
 /** Nome de cada botão no painel da Vercel: /clique-comprar/<nome>. */
 const CLICK_PATH: Record<CtaLocation, string> = {
@@ -22,6 +22,7 @@ const CLICK_PATH: Record<CtaLocation, string> = {
   offer: "oferta",
   final: "final",
   mobile_bar: "barra-celular",
+  aula: "aula",
 };
 
 export type ConsentState = "granted" | "denied";
@@ -104,6 +105,16 @@ function countClickOnVercel(location: CtaLocation): void {
   } catch {
     // Script bloqueado: a compra segue normalmente.
   }
+}
+
+export type VideoGateEvent = "AulaSomAtivado" | "AulaCompraLiberada" | "AulaCliqueCompra" | "AulaPaginaLiberada";
+
+/**
+ * Etapas do vídeo de entrada como eventos personalizados do Meta. O fbq só existe depois
+ * do consentimento (e com NEXT_PUBLIC_META_PIXEL_ID), então sem ele nada é enviado.
+ */
+export function trackVideoGate(event: VideoGateEvent): void {
+  window.fbq?.("trackCustom", event);
 }
 
 /**

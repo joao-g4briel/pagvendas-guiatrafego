@@ -47,11 +47,18 @@ export const viewport: Viewport = {
  */
 const revealBootstrap = `(function(){try{var d=document.documentElement;if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('rv');setTimeout(function(){if(!d.classList.contains('rv-ready'))d.classList.remove('rv')},2500)}catch(e){}})();`;
 
+/**
+ * Vídeo de entrada: marca o <html> antes da primeira pintura. `data-js` mantém o bloqueio só para quem
+ * roda JavaScript; `data-aula-liberada` esconde o bloqueio de quem já liberou a página, sem piscar.
+ */
+const videoGateBootstrap = `(function(){var d=document.documentElement;d.setAttribute('data-js','');try{if(localStorage.getItem(${JSON.stringify(siteConfig.introVideo.storageKey)})==='1')d.setAttribute('data-aula-liberada','')}catch(e){}})();`;
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR" className={montserrat.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: revealBootstrap }} />
+        <script dangerouslySetInnerHTML={{ __html: videoGateBootstrap }} />
       </head>
       <body>
         {/* Aviso de pendências: oculto por padrão; ligue com SHOW_PENDING_NOTICE=true em desenvolvimento. */}

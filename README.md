@@ -25,13 +25,19 @@ Requer Node 20.9 ou mais recente.
 | O quê | Onde |
 |---|---|
 | Preço, nome do produto, checkout, meios de pagamento, texto de entrega | `src/config/site.ts` |
+| Vídeo de entrada: arquivo, capa e chave do localStorage | `siteConfig.introVideo` em `src/config/site.ts` |
+| Vídeo de entrada: tempos para liberar compra (`COMPRA`) e página (`SAIDA`) | `src/components/video-gate.tsx` |
 | Suporte, vendedor (nome, CPF/CNPJ, endereço), reembolso, datas e retenção das páginas legais | `src/config/site.ts` |
 | Valores por ambiente (URL do site, checkout, IDs de medição, contato) | variáveis em `.env.example` |
 | Textos da página (situações, módulos, sumário, amostra, públicos, oferta) | `src/content/guia.ts` |
 | Dúvidas frequentes | `src/components/faq.tsx` |
 | Termos e privacidade | `src/app/termos/page.tsx`, `src/app/privacidade/page.tsx` |
 
-O preço aparece em todos os lugares a partir de `siteConfig.price.amount`.
+O preço aparece em todos os lugares a partir de `siteConfig.price.amount`. Ele é o total que o comprador paga: na Cakto, o produto custa R$ 28,01 e a taxa de serviço de R$ 0,99 completa os R$ 29,00. Ao mudar o preço na Cakto, mantenha os dois iguais.
+
+### Vídeo de entrada
+
+Só na página de vendas (não em termos e privacidade). Na primeira visita, a aula abre por cima da página, muda, e conta só o tempo realmente assistido (pulos e pausas não contam): aos 30 s aparece o botão de compra; aos 60 s, ou no fim do vídeo, a página é liberada e isso fica salvo no localStorage (`mtd_aula_liberada`). Quem volta não é bloqueado: vê só o botão "Ver a aula grátis". Para ver o bloqueio de novo, apague essa chave no navegador. O vídeo fica em `public/videos/`; para usar uma capa, coloque a imagem lá e preencha `introVideo.poster`.
 
 ### Trocar o checkout
 
@@ -55,14 +61,15 @@ Para mudar as páginas da amostra, edite `PAGINAS_AMOSTRA` no script e `previewP
 
 ## Medição (opcional)
 
-**Cliques em comprar, sem configurar nada:** cada clique num botão de compra aparece no Vercel Web Analytics como uma visualização de `/clique-comprar/<botão>` (`topo`, `menu`, `hero`, `previa`, `oferta`, `final`, `barra-celular`). Veja em *Analytics → Pages*. O plano gratuito não tem eventos personalizados, por isso a visualização virtual. Efeito no painel: cada clique soma uma visualização e tira o visitante da taxa de rejeição. O Web Analytics não usa cookies, então essa contagem não depende do aviso de consentimento.
+**Cliques em comprar, sem configurar nada:** cada clique num botão de compra aparece no Vercel Web Analytics como uma visualização de `/clique-comprar/<botão>` (`topo`, `menu`, `hero`, `previa`, `oferta`, `final`, `barra-celular`, `aula`, este último no vídeo de entrada). Veja em *Analytics → Pages*. O plano gratuito não tem eventos personalizados, por isso a visualização virtual. Efeito no painel: cada clique soma uma visualização e tira o visitante da taxa de rejeição. O Web Analytics não usa cookies, então essa contagem não depende do aviso de consentimento.
 
 Sem IDs, nenhum rastreador é carregado e não aparece aviso de cookies. Com `NEXT_PUBLIC_GA4_ID` e/ou `NEXT_PUBLIC_META_PIXEL_ID`:
 
 - um aviso pede consentimento; GA4 e Meta Pixel só carregam depois de "Aceitar medição". A escolha pode ser revista no rodapé;
 - eventos desta página, sem dados pessoais:
   - GA4: `page_view`, `view_item` e `checkout_click` (parâmetro `cta_location`);
-  - Meta: `PageView`, `ViewContent` e o personalizado `CheckoutClick`.
+  - Meta: `PageView`, `ViewContent` e o personalizado `CheckoutClick`;
+  - Meta, no vídeo de entrada: `AulaSomAtivado`, `AulaCompraLiberada`, `AulaCliqueCompra` e `AulaPaginaLiberada` (personalizados).
 
 `checkout_click` e `CheckoutClick` medem **intenção**. Não marque esses eventos como conversão principal para lances.
 
@@ -85,7 +92,7 @@ Com o build rodando em `npx next start -p 3100`:
 
 ```bash
 pip install playwright
-python tests/interacoes.py --url http://localhost:3100   # CTAs, dúvidas, sumário, lightbox, menu, barra móvel, reduced motion
+python tests/interacoes.py --url http://localhost:3100   # CTAs, dúvidas, sumário, lightbox, menu, barra móvel, vídeo de entrada, reduced motion
 python tests/capturas.py --url http://localhost:3100     # capturas em 360, 390, 768 e 1440 px (tests/artifacts/)
 ```
 
@@ -95,7 +102,7 @@ Os scripts usam o Edge instalado (`channel="msedge"`); troque para `chrome` se p
 
 - [x] Meios de pagamento conferidos no checkout em 20/11/2026 (cartão, Pix e cartão + Pix) e preenchidos em `checkout.paymentMethods`.
 - [x] Checkout da Cakto alinhado em 20/11/2026: produto e oferta renomeados para "Guia de Tráfego Pago — Metodaria" e cronômetro de "oferta por tempo limitado" removido (desktop e celular).
-- [ ] Taxa de serviço de R$ 0,99 que a Cakto soma no checkout (total de R$ 29,99 com o preço de R$ 29,00, adotado em 20/11/2026). A página mostra a taxa junto ao preço (`checkout.serviceFee`). Se a Cakto permitir tirá-la, mude o campo para `null`.
+- [x] Taxa de serviço da Cakto embutida no preço desde 21/11/2026: produto a R$ 28,01 + R$ 0,99 = R$ 29,00 no checkout, o mesmo valor da página.
 - [ ] Revisar o texto de entrega (`checkout.delivery`) conforme a configuração do produto na Cakto.
 - [ ] Preencher a identificação do vendedor: nome ou razão social, CPF/CNPJ e endereço (exigidos pelo Decreto 7.962/2013).
 - [ ] Definir o canal de suporte (e-mail e/ou WhatsApp).

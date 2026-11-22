@@ -1,19 +1,13 @@
 import type { CSSProperties } from "react";
 import { ArrowIcon, CheckoutCta } from "@/components/checkout-cta";
 import { TabletMockup } from "@/components/tablet-mockup";
-import { feeNote, formattedPrice, paymentMethodShortLabels, siteConfig } from "@/config/site";
+import { formattedPrice, paymentMethodsShort, siteConfig } from "@/config/site";
 
 const delay = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 
 export function Hero() {
-  const { product, price, checkout, refund } = siteConfig;
-  const methods = new Intl.ListFormat("pt-BR", { style: "long", type: "disjunction" }).format(
-    checkout.paymentMethods.map((method) => paymentMethodShortLabels[method]),
-  );
-  const reassurance = [
-    checkout.paymentMethods.length > 0 ? methods.charAt(0).toUpperCase() + methods.slice(1) : null,
-    `${refund.legalDays} dias de garantia`,
-  ]
+  const { product, price, refund } = siteConfig;
+  const reassurance = [paymentMethodsShort || null, `${refund.legalDays} dias de garantia`]
     .filter(Boolean)
     .join(" · ");
   const stats = [
@@ -51,7 +45,6 @@ export function Hero() {
                 <span className="tabular font-extrabold">{formattedPrice}</span>
                 <span className="text-fg-2">· {price.terms}</span>
               </p>
-              {feeNote ? <p className="mt-1 text-sm text-fg-2">{feeNote}</p> : null}
               <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-7">
                 <CheckoutCta location="hero" className="sm:min-w-[17rem]">
                   Quero acessar o guia

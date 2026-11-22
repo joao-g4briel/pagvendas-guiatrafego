@@ -1,5 +1,5 @@
 import { ArrowIcon, CheckoutCta } from "@/components/checkout-cta";
-import { feeNote, formattedPrice, siteConfig } from "@/config/site";
+import { formattedPrice, siteConfig } from "@/config/site";
 
 export function FinalCta() {
   return (
@@ -17,7 +17,6 @@ export function FinalCta() {
               {siteConfig.product.name} · <span className="tabular font-bold text-fg">{formattedPrice}</span>,{" "}
               {siteConfig.price.terms}.
             </p>
-            {feeNote ? <p className="mt-1 text-sm text-fg-2">{feeNote}</p> : null}
           </div>
           <CheckoutCta location="final" className="shrink-0 sm:min-w-[17rem]">
             Quero acessar o guia

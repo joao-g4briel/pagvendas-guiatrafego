@@ -188,6 +188,9 @@ Botões com 8 px de raio, cards de oferta e de CTA final com 16 px, páginas da 
 ### Card de oferta
 - Superfície com borda forte e 16 px de raio: nome, preço em 72 px, quatro itens com check, botão de largura total "Comprar por R$ 29,00" e, abaixo, pagamento e prazo de 7 dias.
 
+### Vídeo de entrada
+- Camada em tela cheia sobre a página (#080808 a 96% com desfoque), título em 800, vídeo 16:9 com 14 px de raio e borda #2a2a2a, largura limitada pela altura da tela para caber num notebook de 768 px. Botão de som em pílula branca sobre o vídeo (pulsa, exceto com redução de movimento), barra fina de tempo assistido com as marcas "Compra" e "Página", aviso tracejado até o botão de compra aparecer e os botões do site (primário branco e fantasma). No celular, os botões empilham em largura total.
+
 ## Do's and Don'ts
 
 ### Do:

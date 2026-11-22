@@ -53,6 +53,10 @@ export const siteConfig = {
   },
 
   price: {
+    /**
+     * Total que o comprador paga. Conferido no checkout em 21/11/2026: produto a R$ 28,01
+     * + R$ 0,99 de taxa de serviço da Cakto = R$ 29,00. Se mudar o preço na Cakto, mantenha os dois iguais.
+     */
     amount: 29,
     currency: "BRL",
     terms: "pagamento único",
@@ -70,15 +74,18 @@ export const siteConfig = {
      * Conferido em 20/11/2026: o checkout oferece cartão de crédito, Pix e cartão + Pix.
      */
     paymentMethods: ["pix", "cartao"] as PaymentMethod[],
-    /**
-     * Taxa de serviço que a Cakto soma no checkout e o comprador paga. Conferida em 20/11/2026:
-     * R$ 29,00 + R$ 0,99 = R$ 29,99. Não há opção para tirá-la no painel do produto.
-     * Enquanto existir, a página mostra a taxa junto ao preço; use `null` se a Cakto deixar de cobrar.
-     */
-    serviceFee: 0.99 as number | null,
     /** Texto de entrega exibido na oferta e no FAQ. Revise conforme a configuração do produto na Cakto. */
     delivery:
       "O pagamento e a entrega acontecem na Cakto. Depois da confirmação do pagamento, a plataforma libera o acesso ao PDF conforme a configuração do produto, normalmente pelo e-mail informado na compra.",
+  },
+
+  /** Vídeo de entrada da página de vendas (src/components/video-gate.tsx). Os tempos ficam no componente. */
+  introVideo: {
+    src: "/videos/aula-primeira-campanha_COM-VOZ.mp4",
+    /** Imagem mostrada até o primeiro quadro. Ainda não há capa em public/videos. */
+    poster: null as string | null,
+    /** Chave do localStorage de quem já liberou a página. Também lida pelo script do <head> em layout.tsx. */
+    storageKey: "mtd_aula_liberada",
   },
 
   support: {
@@ -129,14 +136,6 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
 /** "R$ 29,00" (com espaço inseparável). */
 export const formattedPrice = priceFormatter.format(siteConfig.price.amount);
 
-const fee = siteConfig.checkout.serviceFee;
-
-/** "+ R$ 0,99 de taxa de serviço da Cakto", ou null quando não há taxa. */
-export const feeNote = fee ? `+ ${priceFormatter.format(fee)} de taxa de serviço da ${siteConfig.checkout.provider}` : null;
-
-/** Versão curta para a barra do celular: "+ R$ 0,99 de taxa". */
-export const feeShortNote = fee ? `+ ${priceFormatter.format(fee)} de taxa` : null;
-
 export const hasTracking = Boolean(siteConfig.analytics.ga4Id || siteConfig.analytics.metaPixelId);
 
 export function supportWhatsappUrl(): string | null {
@@ -155,6 +154,13 @@ export const paymentMethodShortLabels: Record<PaymentMethod, string> = {
   cartao: "cartão",
   boleto: "boleto",
 };
+
+const shortMethods = new Intl.ListFormat("pt-BR", { style: "long", type: "disjunction" }).format(
+  siteConfig.checkout.paymentMethods.map((method) => paymentMethodShortLabels[method]),
+);
+
+/** "Pix ou cartão" (inicial maiúscula), para as linhas curtas de garantia. Vazio se os meios não foram conferidos. */
+export const paymentMethodsShort = shortMethods.charAt(0).toUpperCase() + shortMethods.slice(1);
 
 /** O que falta para abrir as vendas com segurança. Usado no README, no aviso de desenvolvimento e nas páginas legais. */
 export function getPendingItems(): string[] {

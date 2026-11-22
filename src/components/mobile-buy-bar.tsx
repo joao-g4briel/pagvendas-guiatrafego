@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, LazyMotion, domAnimation, m } from "motion/react";
 import { CheckoutCta } from "@/components/checkout-cta";
-import { feeShortNote, formattedPrice, siteConfig } from "@/config/site";
+import { formattedPrice, siteConfig } from "@/config/site";
 
 /** Seções que, visíveis, tornam a barra desnecessária (já têm compra ou são o fim da página). */
 const HIDE_WHEN_VISIBLE = ["oferta", "compra-final"];
@@ -54,6 +54,13 @@ export function MobileBuyBar() {
 
   const visible = pastHero && !blocked && !consentOpen;
 
+  // Avisa outros elementos fixos (botão "Ver a aula grátis") para subirem enquanto a barra ocupa o rodapé.
+  useEffect(() => {
+    const root = document.documentElement;
+    root.toggleAttribute("data-buy-bar", visible);
+    return () => root.removeAttribute("data-buy-bar");
+  }, [visible]);
+
   return (
     <LazyMotion features={domAnimation} strict>
       <AnimatePresence>
@@ -71,7 +78,6 @@ export function MobileBuyBar() {
               <p className="min-w-0 leading-tight">
                 <span className="block truncate text-sm text-fg-2">{siteConfig.product.name}</span>
                 <span className="tabular text-lg font-bold">{formattedPrice}</span>
-                {feeShortNote ? <span className="block text-xs text-fg-2">{feeShortNote}</span> : null}
               </p>
               <CheckoutCta location="mobile_bar" size="compact" className="shrink-0">
                 Comprar guia
